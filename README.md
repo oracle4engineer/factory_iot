@@ -31,7 +31,7 @@ $ export NLS_LANG=Japanese_Japan.AL32UTF8
 $ sh test.sh
 ```
 
-# Data Miner
+## Data Miner
 
 Open SQL Developer
 
@@ -39,17 +39,8 @@ Open SQL Developer
 $ /opt/oracle/sqldeveloper/sqldeveloper.sh
 ```
 
-Create the connection for 'iot' user at Connections tab.
-
-Create the connection for 'iot' user at Data Miner tab.
-
-Configure the required priviledges.
-
-Create a Project.
-
-Import the workflow selecting 'sqldev/workflow.xml'.
-
-
-
-
+* To create the connection for 'iot' user, import ./sqldeveloper/connection.xml (password: welcome1) at Connections tab.
+* Create the connection for 'iot' user at Data Miner tab, and double click the new connection.
+* Configure the required priviledges when the user connect to Data Miner first time.
+* Create a project 'Factory IoT' and import the workflow selecting ./sqldeveloper/workflow.xml.
 

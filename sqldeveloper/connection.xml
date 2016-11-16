@@ -7,7 +7,7 @@
             <Contents/>
          </StringRefAddr>
          <StringRefAddr addrType="SavePassword">
-            <Contents>true</Contents>
+            <Contents>false</Contents>
          </StringRefAddr>
          <StringRefAddr addrType="OracleConnectionType">
             <Contents>BASIC</Contents>
@@ -18,9 +18,6 @@
          <StringRefAddr addrType="sid">
             <Contents>orcl</Contents>
          </StringRefAddr>
-         <StringRefAddr addrType="ExportPasswordMode">
-            <Contents>Key</Contents>
-         </StringRefAddr>
          <StringRefAddr addrType="customUrl">
             <Contents>jdbc:oracle:thin:@localhost:1521:orcl</Contents>
          </StringRefAddr>
@@ -29,9 +26,6 @@
          </StringRefAddr>
          <StringRefAddr addrType="NoPasswordConnection">
             <Contents>TRUE</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="password">
-            <Contents>bu22dBDhqHIgEPwGoDs4jQ==</Contents>
          </StringRefAddr>
          <StringRefAddr addrType="hostname">
             <Contents>localhost</Contents>
@@ -48,17 +42,14 @@
          <StringRefAddr addrType="OS_AUTHENTICATION">
             <Contents>false</Contents>
          </StringRefAddr>
-         <StringRefAddr addrType="ConnName">
+         <StringRefAddr addrType="user">
             <Contents>iot</Contents>
          </StringRefAddr>
          <StringRefAddr addrType="KERBEROS_AUTHENTICATION">
             <Contents>false</Contents>
          </StringRefAddr>
-         <StringRefAddr addrType="user">
+         <StringRefAddr addrType="ConnName">
             <Contents>iot</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="ExportKeyChecksum">
-            <Contents>T4M6lQS4XQ+diuO1x+wmLQ==</Contents>
          </StringRefAddr>
       </RefAddresses>
    </Reference>
