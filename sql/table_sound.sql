@@ -20,7 +20,6 @@ ORGANIZATION EXTERNAL (
 
 COL device FOR a20
 COL time_start FOR a20
-COL ff FOR a20
 
 SELECT device, time_start, ff
 FROM sound

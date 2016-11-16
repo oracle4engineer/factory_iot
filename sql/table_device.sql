@@ -15,7 +15,6 @@ SET LINES 100
 COL model FOR a20
 COL device FOR a20
 COL time_start FOR a20
-COL ff FOR a20
 
 SELECT model, d.device, time_start, ff
 FROM sound s, device d
