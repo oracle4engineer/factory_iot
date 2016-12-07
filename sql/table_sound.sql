@@ -5,10 +5,11 @@ CREATE TABLE sound (
 , device      VARCHAR2(255)
 , time_start  VARCHAR2(255)
 , time_end    VARCHAR2(255)
-, ff          NUMBER(10,2)
+, frequency   NUMBER(10,2)
 , energy      NUMBER(10,2)
 , temperature NUMBER(10,2)
 , humidity    NUMBER(10,2)
+, anomaly     NUMBER(1)
 )
 ORGANIZATION EXTERNAL (
   TYPE ORACLE_HIVE
@@ -21,7 +22,7 @@ ORGANIZATION EXTERNAL (
 COL device FOR a20
 COL time_start FOR a20
 
-SELECT device, time_start, ff
+SELECT device, time_start, frequency
 FROM sound
 WHERE device = 'device01'
 AND ROWNUM <= 10;
