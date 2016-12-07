@@ -6,11 +6,9 @@ The scripts are tested on [Big Data Lite VM 4.5.0](http://www.oracle.com/technet
 
 Startup Oracle Database.
 
-```sh
-$ lsnrctl start
-$ export $ORACLE_SID=cdb
-$ sqlplus / as sysdba
-```
+    $ lsnrctl start
+    $ export $ORACLE_SID=cdb
+    $ sqlplus / as sysdba
 
 ```sql
 SQL> startup
