@@ -37,18 +37,30 @@ SET LINESIZE 200
 SELECT COUNT(*) FROM training;
 SELECT * FROM training WHERE ROWNUM <= 10;
 
--- Random failure (0.1%)
+PROMPT Random failure (0.1%)
 
 INSERT INTO training
 SELECT seq.nextval, value01, value02, value03, value04, value05, value06, 0.49, 1
 FROM training SAMPLE(0.1);
 COMMIT;
 
--- Artificial failure (10% when value06 = 0.94)
+PROMPT Artificial failure (5% when value06 = 0.95 and 10% when value06 = 0.94)
+
+INSERT INTO training
+SELECT seq.nextval, value01, value02, value03, value04, value05, value06, 0.49, 1
+FROM training SAMPLE(5) WHERE value06 = 0.95;
+COMMIT;
 
 INSERT INTO training
 SELECT seq.nextval, value01, value02, value03, value04, value05, value06, 0.49, 1
 FROM training SAMPLE(10) WHERE value06 = 0.94;
+COMMIT;
+
+PROMPT Artificial failure (10% when value04 = 'b5')
+
+INSERT INTO training
+SELECT seq.nextval, value01, value02, value03, value04, value05, value06, 0.49, 1
+FROM training SAMPLE(10) WHERE value04 = 'b5';
 COMMIT;
 
 EXIT
