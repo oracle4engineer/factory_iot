@@ -2,43 +2,48 @@
 
 The scripts are tested on [Big Data Lite VM 4.5.0](http://www.oracle.com/technetwork/database/bigdata-appliance/oracle-bigdatalite-450-3300689.html)
 
-## Big Data SQL
-
 Startup Oracle Database.
 
     $ lsnrctl start
     $ export $ORACLE_SID=cdb
     $ sqlplus / as sysdba
 
-```sql
-SQL> startup
-SQL> ALTER PLUGGABLE DATABASE orcl OPEN;
-SQL> ALTER SESSION SET CONTAINER = orcl;
-```
+    SQL> startup
+    SQL> ALTER PLUGGABLE DATABASE orcl OPEN;
+    SQL> ALTER SESSION SET CONTAINER = orcl;
 
-Create 'iot' user on the database.
+Create 'factory_iot' user on the database.
 
-```sql
-SQL> sqlplus / as sysdba @sql/user_iot.sql
-```
-
-Run the test script.
-
-```sh
-$ export NLS_LANG=Japanese_Japan.AL32UTF8
-$ sh test.sh
-```
-
-## Data Miner
+    $ sqlplus / as sysdba @00_common/sql/user.sql
 
 Open SQL Developer
 
-```sh
-$ /opt/oracle/sqldeveloper/sqldeveloper.sh
-```
+    $ /opt/oracle/sqldeveloper/sqldeveloper.sh
 
-* To create the connection for 'iot' user, import ./sqldeveloper/connection.xml (password: welcome1) at Connections tab.
-* Create the connection for 'iot' user at Data Miner tab, and double click the new connection.
+* To create the connection for 'factory_iot' user, import 00_common/sqldeveloper/connection.xml (password: welcome1) at Connections tab.
+* Create the connection for 'factory_iot' user at Data Miner tab, and double click the new connection.
 * Configure the required priviledges when the user connect to Data Miner first time.
-* Create a project 'Factory IoT' and import the workflow selecting ./sqldeveloper/workflow.xml.
+* Create a project 'Factory IoT'.
 
+## #01 Sound
+
+Run the test script.
+
+    $ cd 01_sound
+    $ export NLS_LANG=Japanese_Japan.AL32UTF8
+    $ sh test.sh
+
+Import and run the workflow "Detect Anomaly with Sound" on Data Miner GUI.
+
+    01_sound/sqldeveloper/workflow.xml
+
+## #02 Process
+
+Run the test script.
+
+    $ cd 02_process
+    $ sh test.sh
+
+Import and run the workflow "Detect Causing Processes" on Data Miner GUI.
+
+    02_process/sqldeveloper/workflow.xml
