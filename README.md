@@ -2,10 +2,14 @@
 
 The scripts are tested on [Big Data Lite VM 4.5.0](http://www.oracle.com/technetwork/database/bigdata-appliance/oracle-bigdatalite-450-3300689.html)
 
+Clone this repository.
+
+    $ git clone https://github.com/oracle4engineer/factory_iot.git
+
 Startup Oracle Database.
 
     $ lsnrctl start
-    $ export $ORACLE_SID=cdb
+    $ export ORACLE_SID=cdb
     $ sqlplus / as sysdba
 
     SQL> startup
