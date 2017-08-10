@@ -1,3 +1,6 @@
+
+CREATE OR REPLACE DIRECTORY EXTERNAL_DIR AS '/home/oracle/factory_iot';
+
 DROP TABLE sound;
 
 CREATE TABLE sound (

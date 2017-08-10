@@ -1,10 +1,11 @@
 # Factory IoT
 
-The scripts are tested on [Big Data Lite VM 4.5.0](http://www.oracle.com/technetwork/database/bigdata-appliance/oracle-bigdatalite-450-3300689.html)
+The scripts are tested on [Big Data Lite VM 4.9.0](http://www.oracle.com/technetwork/database/bigdata-appliance/oracle-bigdatalite-2104726.html)
 
-Clone this repository.
+Clone this repository, and move to the directory.
 
     $ git clone https://github.com/oracle4engineer/factory_iot.git
+    $ cd factory_iot
 
 Startup Oracle Database.
 
@@ -13,7 +14,7 @@ Startup Oracle Database.
     $ sqlplus / as sysdba
 
     SQL> startup
-    SQL> ALTER PLUGGABLE DATABASE orcl OPEN;
+    SQL> ALTER PLUGGABLE DATABASE orcl OPEN; -- if not open yet
     SQL> ALTER SESSION SET CONTAINER = orcl;
 
 Create 'factory_iot' user on the database.
