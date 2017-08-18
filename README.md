@@ -27,7 +27,7 @@ Open SQL Developer
 
 * To create the connection for 'factory_iot' user, import 00_common/sqldeveloper/connection.xml (password: welcome1) at Connections tab.
 * Create the connection for 'factory_iot' user at Data Miner tab, and double click the new connection.
-* Configure the required priviledges when the user connect to Data Miner first time.
+* Configure the required priviledges when the user connect to Data Miner first time. (password: welcome1)
 * Create a project 'Factory IoT'.
 
 ## #01 Sound
