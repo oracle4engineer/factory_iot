@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <WorkflowProcess Version="12.2.0.0.1" DBVersion="12.1.0.2.0" Schema="" xmlns="http://xmlns.oracle.com/odmr11">
     <Nodes>
-        <DataSource Id="10002" Name="DEVICE" Status="Complete">
-            <Icon XCOORD="75" YCOORD="222"></Icon>
+        <DataSource Id="10002" Name="DEVICE（Database）" Status="Complete">
+            <Icon XCOORD="21" YCOORD="398"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -27,8 +27,8 @@ from "FACTORY_IOT"."DEVICE"  )</SQLExpression>
                 <NumberOfValues>10000</NumberOfValues>
             </DataGuideSettings>
         </DataSource>
-        <DataSource Id="10025" Name="SOUND" Status="Complete">
-            <Icon XCOORD="75" YCOORD="136"></Icon>
+        <DataSource Id="10025" Name="SOUND（Hadoop）" Status="Complete">
+            <Icon XCOORD="26" YCOORD="154"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -47,7 +47,7 @@ from "FACTORY_IOT"."DEVICE"  )</SQLExpression>
 "SOUND"."TEMPERATURE", 
 "SOUND"."TIME_END", 
 "SOUND"."TIME_START", 
-"SOUND"."ID" 
+"SOUND"."TIME_SERIAL" 
 from "FACTORY_IOT"."SOUND"  )</SQLExpression>
             <Attributes>
                 <Attribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
@@ -58,7 +58,7 @@ from "FACTORY_IOT"."SOUND"  )</SQLExpression>
                 <Attribute Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
                 <Attribute Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
                 <Attribute Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                <Attribute Name="ID" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </Attributes>
             <SourceTable Schema="" Name="SOUND" Synonym="false"/>
             <JSONColumns/>
@@ -66,9 +66,10 @@ from "FACTORY_IOT"."SOUND"  )</SQLExpression>
                 <NumberOfRows>2000</NumberOfRows>
                 <NumberOfValues>10000</NumberOfValues>
             </DataGuideSettings>
+            <includeAllAvailableAttributes>false</includeAllAvailableAttributes>
         </DataSource>
-        <DataSource Id="10074" Name="SOUND_TEST" Status="Complete">
-            <Icon XCOORD="783" YCOORD="311"></Icon>
+        <CreateTable TableName="TRAINING" Table="true" AutoSpec="Yes" Id="10027" Name="TRAINING" Status="Complete">
+            <Icon XCOORD="290" YCOORD="282"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -79,57 +80,17 @@ from "FACTORY_IOT"."SOUND"  )</SQLExpression>
                     <TopN/>
                 </Method>
             </CacheSettings>
-            <SQLExpression>"N$10074" as (select "SOUND_TEST"."ENERGY", 
-"SOUND_TEST"."HUMIDITY", 
-"SOUND_TEST"."TEMPERATURE", 
-"SOUND_TEST"."FREQUENCY", 
-"SOUND_TEST"."DEVICE", 
-"SOUND_TEST"."TIME_START", 
-"SOUND_TEST"."ID", 
-"SOUND_TEST"."TIME_END" 
-from "FACTORY_IOT"."SOUND_TEST"  )</SQLExpression>
-            <Attributes>
-                <Attribute Name="ENERGY" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
-                <Attribute Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                <Attribute Name="ID" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-            </Attributes>
-            <SourceTable Schema="" Name="SOUND_TEST" Synonym="false"/>
-            <JSONColumns/>
-            <DataGuideSettings Generate="true" UseFullData="false" UseFullDoc="false">
-                <NumberOfRows>2000</NumberOfRows>
-                <NumberOfValues>10000</NumberOfValues>
-            </DataGuideSettings>
-        </DataSource>
-        <CreateTable TableName="SOUND_TEMP" Table="true" AutoSpec="Yes" Id="10027" Name="SOUND_TEMP" Status="Ready">
-            <Icon XCOORD="297" YCOORD="310"></Icon>
-            <Messages/>
-            <Parallelism Enable="false">
-                <SystemDetermined/>
-            </Parallelism>
-            <CacheSettings UseFullData="false" GenerateCache="false">
-                <NumberOfRows>2000</NumberOfRows>
-                <Method>
-                    <TopN/>
-                </Method>
-            </CacheSettings>
-            <SQLExpression>"N$10027" as (SELECT 
-"DEVICE",
-"MODEL",
-"ANOMALY",
-"DEVICE1",
-"ENERGY",
-"FREQUENCY",
-"HUMIDITY",
-"TEMPERATURE",
-"TIME_END",
-"TIME_START",
-"ID"
- FROM {INPUT_SOURCE} )</SQLExpression>
+            <SQLExpression>"N$10027" AS ( SELECT  "DEVICE" ,
+ "MODEL" ,
+ "ANOMALY" ,
+ "DEVICE1" ,
+ "ENERGY" ,
+ "FREQUENCY" ,
+ "HUMIDITY" ,
+ "TEMPERATURE" ,
+ "TIME_END" ,
+ "TIME_START" ,
+ "TIME_SERIAL"  FROM "TRAINING")</SQLExpression>
             <DBAttributes>
                 <DBAttribute Key="No" Index="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                 <DBAttribute Key="No" Index="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
@@ -141,12 +102,12 @@ from "FACTORY_IOT"."SOUND_TEST"  )</SQLExpression>
                 <DBAttribute Key="No" Index="No" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
                 <DBAttribute Key="No" Index="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
                 <DBAttribute Key="No" Index="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                <DBAttribute Key="No" Index="No" Name="ID" DataType="NUMBER" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </DBAttributes>
             <JSONColumns/>
         </CreateTable>
         <Join UseCartesian="false" Id="10006" Name="結合" Status="Complete">
-            <Icon XCOORD="299" YCOORD="137"></Icon>
+            <Icon XCOORD="164" YCOORD="281"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -158,46 +119,46 @@ from "FACTORY_IOT"."SOUND_TEST"  )</SQLExpression>
                 </Method>
             </CacheSettings>
             <SQLExpression>"N$10006" as (SELECT 
-"デバイス絞り込み"."DEVICE"
-, "デバイス絞り込み"."MODEL"
-, "SOUND"."ANOMALY"
-, "SOUND"."DEVICE" "DEVICE1"
-, "SOUND"."ENERGY"
-, "SOUND"."FREQUENCY"
-, "SOUND"."HUMIDITY"
-, "SOUND"."TEMPERATURE"
-, "SOUND"."TIME_END"
-, "SOUND"."TIME_START"
-, "SOUND"."ID"
+"モデルAのデバイス"."DEVICE"
+, "モデルAのデバイス"."MODEL"
+, "8月20日のデータ"."ANOMALY"
+, "8月20日のデータ"."DEVICE" "DEVICE1"
+, "8月20日のデータ"."ENERGY"
+, "8月20日のデータ"."FREQUENCY"
+, "8月20日のデータ"."HUMIDITY"
+, "8月20日のデータ"."TEMPERATURE"
+, "8月20日のデータ"."TIME_END"
+, "8月20日のデータ"."TIME_START"
+, "8月20日のデータ"."TIME_SERIAL"
 
 FROM
-{INPUT_SOURCE:10025} "SOUND"
-INNER JOIN {INPUT_SOURCE:10021} "デバイス絞り込み"
-ON "SOUND"."DEVICE" = "デバイス絞り込み"."DEVICE"
+{INPUT_SOURCE:10082} "8月20日のデータ"
+INNER JOIN {INPUT_SOURCE:10021} "モデルAのデバイス"
+ON "8月20日のデータ"."DEVICE" = "モデルAのデバイス"."DEVICE"
 
  )</SQLExpression>
             <KeyColumns AutoSpec="No">
                 <JoinColumn Type="Inner">
-                    <LeftColumn NodeId="10025" NodeName="SOUND" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
-                    <RightColumn NodeId="10021" NodeName="デバイス絞り込み" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <LeftColumn NodeId="10082" NodeName="8月20日のデータ" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <RightColumn NodeId="10021" NodeName="モデルAのデバイス" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                 </JoinColumn>
             </KeyColumns>
             <OutputColumns AutoSpec="Yes">
-                <RefDBColumn NodeId="10021" NodeName="デバイス絞り込み" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10021" NodeName="デバイス絞り込み" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="DEVICE" DataType="VARCHAR2" Status="Valid" Alias="DEVICE1"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10025" NodeName="SOUND" Name="ID" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10021" NodeName="モデルAのデバイス" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10021" NodeName="モデルAのデバイス" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="DEVICE" DataType="VARCHAR2" Status="Valid" Alias="DEVICE1"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </OutputColumns>
         </Join>
-        <RowFilter Id="10021" Name="デバイス絞り込み" Status="Complete">
-            <Icon XCOORD="177" YCOORD="222"></Icon>
+        <RowFilter Id="10021" Name="モデルAのデバイス" Status="Complete">
+            <Icon XCOORD="167" YCOORD="398"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -222,8 +183,8 @@ WHERE
             </OutputColumns>
             <Filter>"MODEL"  = 'modelA'</Filter>
         </RowFilter>
-        <RowFilter Id="10041" Name="正常データ絞り込み" Status="Ready">
-            <Icon XCOORD="431" YCOORD="370"></Icon>
+        <RowFilter Id="10041" Name="正常データ絞り込み" Status="Complete">
+            <Icon XCOORD="437" YCOORD="341"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -237,15 +198,15 @@ WHERE
             <SQLExpression>"N$10041" as (SELECT 
 "DEVICE"
 , "MODEL"
+, "ANOMALY"
+, "DEVICE1"
 , "ENERGY"
+, "FREQUENCY"
 , "HUMIDITY"
 , "TEMPERATURE"
-, "FREQUENCY"
-, "DEVICE1"
-, "TIME_START"
 , "TIME_END"
-, "ANOMALY"
-, "ID"
+, "TIME_START"
+, "TIME_SERIAL"
 
 FROM
 {INPUT_SOURCE}
@@ -254,20 +215,100 @@ WHERE
             <OutputColumns>
                 <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                 <Attribute Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
                 <Attribute Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
                 <Attribute Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
                 <Attribute Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
-                <Attribute Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
                 <Attribute Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                <Attribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="ID" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </OutputColumns>
             <Filter>"ANOMALY" = 0</Filter>
         </RowFilter>
-        <ClassificationBuild Id="10016" Name="分類構築" Status="Ready">
-            <Icon XCOORD="432" YCOORD="265"></Icon>
+        <RowFilter Id="10082" Name="8月20日のデータ" Status="Complete">
+            <Icon XCOORD="163" YCOORD="154"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10082" as (SELECT 
+"ANOMALY"
+, "DEVICE"
+, "ENERGY"
+, "FREQUENCY"
+, "HUMIDITY"
+, "TEMPERATURE"
+, "TIME_END"
+, "TIME_START"
+, "TIME_SERIAL"
+
+FROM
+{INPUT_SOURCE}
+WHERE
+"TIME_START" LIKE '2017/08/20 %' )</SQLExpression>
+            <OutputColumns>
+                <Attribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
+            </OutputColumns>
+            <Filter>"TIME_START" LIKE '2017/08/20 %'</Filter>
+        </RowFilter>
+        <RowFilter Id="10095" Name="8月21日のデータ" Status="Complete">
+            <Icon XCOORD="789" YCOORD="153"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10095" as (SELECT 
+"ANOMALY"
+, "DEVICE"
+, "ENERGY"
+, "FREQUENCY"
+, "HUMIDITY"
+, "TEMPERATURE"
+, "TIME_END"
+, "TIME_START"
+, "TIME_SERIAL"
+
+FROM
+{INPUT_SOURCE}
+WHERE
+"TIME_START" LIKE '2017/08/21 %' )</SQLExpression>
+            <OutputColumns>
+                <Attribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
+            </OutputColumns>
+            <Filter>"TIME_START" LIKE '2017/08/21 %'</Filter>
+        </RowFilter>
+        <ClassificationBuild Id="10103" Name="分類構築" Status="Complete">
+            <Icon XCOORD="569" YCOORD="246"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -284,8 +325,8 @@ WHERE
                 <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="ID" DataType="NUMBER" Status="Valid"/>
             </MiningAttributes>
             <Stoplists>
                 <Stoplist Id="1" Name="Default" Type="Basic" Language="ENGLISH" DBName="">
@@ -661,35 +702,29 @@ WHERE
                 </Theme>
             </TextSettings>
             <TextAttributes/>
-            <HeuristicSummaryResult StatisticTable="ODMR$01_07_30_242502SMLHUQE">
-                <Attribute Name="MODEL"/>
-            </HeuristicSummaryResult>
             <TestDataSource>
                 <SplitData TestPercent="40.0" DataFormat="Table"/>
             </TestDataSource>
             <TargetAttribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
             <Models>
-                <NaiveBayesModel Id="10080" Name="CLAS_NB_1_14" Status="Ready" CreationDate="2017-04-09T23:41:44" Annotation="" UseForOutput="true">
+                <NaiveBayesModel Id="10099" Name="CLAS_NB_1_4" Status="Complete" CreationDate="2017-08-21T05:11:40" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="ID" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
                         </MiningAttributes>
-                        <HeuristicResult StatisticTable="ODMR$01_07_30_242502SMLHUQE">
-                            <Attribute Name="MODEL"/>
-                        </HeuristicResult>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$23_41_38_798100HKFSFAD"/>
+                        <Balanced WeightsTable="ODMR$05_11_35_106010JSBUQOC"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -699,27 +734,24 @@ WHERE
                         <NABS_SINGLETON_THRESHOLD>0.0</NABS_SINGLETON_THRESHOLD>
                     </NaiveBayesAlgo>
                 </NaiveBayesModel>
-                <DecisionTreeModel Id="10079" Name="CLAS_DT_1_14" Status="Ready" CreationDate="2017-04-09T23:41:44" Annotation="" UseForOutput="true">
+                <DecisionTreeModel Id="10100" Name="CLAS_DT_1_4" Status="Complete" CreationDate="2017-08-21T05:11:40" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="ID" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
                         </MiningAttributes>
-                        <HeuristicResult StatisticTable="ODMR$01_07_30_242502SMLHUQE">
-                            <Attribute Name="MODEL"/>
-                        </HeuristicResult>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$23_41_38_777659AKSYYGX"/>
+                        <Balanced WeightsTable="ODMR$05_11_35_085061BMAUDEY"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -733,27 +765,24 @@ WHERE
                         <TREE_TERM_MINREC_SPLIT>20</TREE_TERM_MINREC_SPLIT>
                     </DecisionTreeAlgo>
                 </DecisionTreeModel>
-                <CSupportVectorMachineModel Id="10078" Name="CLAS_SVM_1_14" Status="Ready" CreationDate="2017-04-09T23:41:44" Annotation="" UseForOutput="true">
+                <CSupportVectorMachineModel Id="10101" Name="CLAS_SVM_1_4" Status="Complete" CreationDate="2017-08-21T05:11:40" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="ID" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
                         </MiningAttributes>
-                        <HeuristicResult StatisticTable="ODMR$01_07_30_242502SMLHUQE">
-                            <Attribute Name="MODEL"/>
-                        </HeuristicResult>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$23_41_38_813535DBRQCWR"/>
+                        <Balanced WeightsTable="ODMR$05_11_35_132051IJOCUTU"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -763,27 +792,24 @@ WHERE
                         <SVMS_CONV_TOLERANCE>0.001</SVMS_CONV_TOLERANCE>
                     </CSupportVectorMachineAlgo>
                 </CSupportVectorMachineModel>
-                <CGeneralizedLinearModel Id="10077" Name="CLAS_GLM_1_14" Status="Ready" CreationDate="2017-04-09T23:41:44" Annotation="" UseForOutput="true">
+                <CGeneralizedLinearModel Id="10102" Name="CLAS_GLM_1_4" Status="Complete" CreationDate="2017-08-21T05:11:40" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="ID" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
                         </MiningAttributes>
-                        <HeuristicResult StatisticTable="ODMR$01_07_30_242502SMLHUQE">
-                            <Attribute Name="MODEL"/>
-                        </HeuristicResult>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$23_41_38_828340XIRVYXR"/>
+                        <Balanced WeightsTable="ODMR$05_11_35_153430NHFUNHO"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -798,84 +824,84 @@ WHERE
                 <TopNTargets Value="5"/>
             </TestSettings>
             <Results genAccuracyMetrics="true" genConfusionMatrix="true" genROC="true" genLift="true" genTuning="false">
-                <ClassificationResult ModelId="10078" Status="Ready" Name="CLAS_SVM_1_14" CreationDate="2017-04-09T23:41:49">
-                    <TestMetrics Name="ODMR$23_41_47_841460XJXFFRP" CreationDate="2017-04-09T23:41:47"/>
-                    <ConfusionMatrix Name="ODMR$23_41_47_330141ASAAUYL" CreationDate="2017-04-09T23:41:47"/>
+                <ClassificationResult ModelId="10099" Status="Complete" Name="CLAS_NB_1_4" CreationDate="2017-08-21T05:11:45">
+                    <TestMetrics Name="ODMR$05_11_44_238461RACLYDE" CreationDate="2017-08-21T05:11:44"/>
+                    <ConfusionMatrix Name="ODMR$05_11_43_768812EZDTLQD" CreationDate="2017-08-21T05:11:44"/>
                     <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$23_41_47_926884QHKIYHJ" CreationDate="2017-04-09T23:41:48"/>
-                        <Lift TargetValue="1" Name="ODMR$23_41_48_249117WEVODSH" CreationDate="2017-04-09T23:41:48"/>
+                        <Lift TargetValue="0" Name="ODMR$05_11_44_360904TMIIPKN" CreationDate="2017-08-21T05:11:44"/>
+                        <Lift TargetValue="1" Name="ODMR$05_11_44_652595OTLTRKK" CreationDate="2017-08-21T05:11:44"/>
                     </Lifts>
                     <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$23_41_48_370439PWREQVA" CreationDate="2017-04-09T23:41:48"/>
-                        <ROC TargetValue="1" Name="ODMR$23_41_48_502835CQJYAIJ" CreationDate="2017-04-09T23:41:48"/>
+                        <ROC TargetValue="0" Name="ODMR$05_11_44_813015ZKWRRQQ" CreationDate="2017-08-21T05:11:44"/>
+                        <ROC TargetValue="1" Name="ODMR$05_11_44_954839BTDKWFF" CreationDate="2017-08-21T05:11:45"/>
                         <AreaUnderCurve Area="1.0" TargetValue="0"/>
                         <AreaUnderCurve Area="1.0" TargetValue="1"/>
                     </ROCs>
                 </ClassificationResult>
-                <ClassificationResult ModelId="10080" Status="Ready" Name="CLAS_NB_1_14" CreationDate="2017-04-09T23:41:49">
-                    <TestMetrics Name="ODMR$23_41_47_845292VSVLQOT" CreationDate="2017-04-09T23:41:47"/>
-                    <ConfusionMatrix Name="ODMR$23_41_47_342479SFFGPLZ" CreationDate="2017-04-09T23:41:47"/>
+                <ClassificationResult ModelId="10102" Status="Complete" Name="CLAS_GLM_1_4" CreationDate="2017-08-21T05:11:45">
+                    <TestMetrics Name="ODMR$05_11_44_234746YWBTUXO" CreationDate="2017-08-21T05:11:44"/>
+                    <ConfusionMatrix Name="ODMR$05_11_43_876349DZOYUGH" CreationDate="2017-08-21T05:11:44"/>
                     <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$23_41_47_933221NUAKZTW" CreationDate="2017-04-09T23:41:48"/>
-                        <Lift TargetValue="1" Name="ODMR$23_41_48_212923JZPEQMS" CreationDate="2017-04-09T23:41:48"/>
+                        <Lift TargetValue="0" Name="ODMR$05_11_44_337927CDLNLHA" CreationDate="2017-08-21T05:11:44"/>
+                        <Lift TargetValue="1" Name="ODMR$05_11_44_622337PFIWMZF" CreationDate="2017-08-21T05:11:44"/>
                     </Lifts>
                     <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$23_41_48_326288NQEKQHF" CreationDate="2017-04-09T23:41:48"/>
-                        <ROC TargetValue="1" Name="ODMR$23_41_48_464902CZLSRFE" CreationDate="2017-04-09T23:41:48"/>
+                        <ROC TargetValue="0" Name="ODMR$05_11_44_747414JSAEIXT" CreationDate="2017-08-21T05:11:44"/>
+                        <ROC TargetValue="1" Name="ODMR$05_11_44_894623PTWQDPL" CreationDate="2017-08-21T05:11:45"/>
+                        <AreaUnderCurve Area="0.6882715821266174" TargetValue="0"/>
+                        <AreaUnderCurve Area="0.6913580298423767" TargetValue="1"/>
+                    </ROCs>
+                </ClassificationResult>
+                <ClassificationResult ModelId="10101" Status="Complete" Name="CLAS_SVM_1_4" CreationDate="2017-08-21T05:11:45">
+                    <TestMetrics Name="ODMR$05_11_44_230645ZDKXIYQ" CreationDate="2017-08-21T05:11:44"/>
+                    <ConfusionMatrix Name="ODMR$05_11_43_777429KSMHZCT" CreationDate="2017-08-21T05:11:44"/>
+                    <Lifts>
+                        <Lift TargetValue="0" Name="ODMR$05_11_44_344246DFGIMDC" CreationDate="2017-08-21T05:11:44"/>
+                        <Lift TargetValue="1" Name="ODMR$05_11_44_656173MAPMIWZ" CreationDate="2017-08-21T05:11:44"/>
+                    </Lifts>
+                    <ROCs>
+                        <ROC TargetValue="0" Name="ODMR$05_11_44_798488DLPDPSL" CreationDate="2017-08-21T05:11:44"/>
+                        <ROC TargetValue="1" Name="ODMR$05_11_44_959110KUSWQQR" CreationDate="2017-08-21T05:11:45"/>
                         <AreaUnderCurve Area="1.0" TargetValue="0"/>
                         <AreaUnderCurve Area="1.0" TargetValue="1"/>
                     </ROCs>
                 </ClassificationResult>
-                <ClassificationResult ModelId="10077" Status="Ready" Name="CLAS_GLM_1_14" CreationDate="2017-04-09T23:41:49">
-                    <TestMetrics Name="ODMR$23_41_47_849980BQYKAWA" CreationDate="2017-04-09T23:41:47"/>
-                    <ConfusionMatrix Name="ODMR$23_41_47_301435UTETUVR" CreationDate="2017-04-09T23:41:47"/>
+                <ClassificationResult ModelId="10100" Status="Complete" Name="CLAS_DT_1_4" CreationDate="2017-08-21T05:11:45">
+                    <TestMetrics Name="ODMR$05_11_44_210743UARCAQZ" CreationDate="2017-08-21T05:11:44"/>
+                    <ConfusionMatrix Name="ODMR$05_11_43_826333JWUMZZM" CreationDate="2017-08-21T05:11:44"/>
                     <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$23_41_47_933579HKNJKGM" CreationDate="2017-04-09T23:41:48"/>
-                        <Lift TargetValue="1" Name="ODMR$23_41_48_202438YUEBDNY" CreationDate="2017-04-09T23:41:48"/>
+                        <Lift TargetValue="0" Name="ODMR$05_11_44_413927OGPILXG" CreationDate="2017-08-21T05:11:44"/>
+                        <Lift TargetValue="1" Name="ODMR$05_11_44_644520QNIPMFK" CreationDate="2017-08-21T05:11:44"/>
                     </Lifts>
                     <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$23_41_48_362842PIOOEPC" CreationDate="2017-04-09T23:41:48"/>
-                        <ROC TargetValue="1" Name="ODMR$23_41_48_517441IYUOYXZ" CreationDate="2017-04-09T23:41:48"/>
-                        <AreaUnderCurve Area="0.8672839403152466" TargetValue="0"/>
-                        <AreaUnderCurve Area="0.8703703880310059" TargetValue="1"/>
-                    </ROCs>
-                </ClassificationResult>
-                <ClassificationResult ModelId="10079" Status="Ready" Name="CLAS_DT_1_14" CreationDate="2017-04-09T23:41:49">
-                    <TestMetrics Name="ODMR$23_41_47_834956ZTQFZRM" CreationDate="2017-04-09T23:41:47"/>
-                    <ConfusionMatrix Name="ODMR$23_41_47_339663UKRECJL" CreationDate="2017-04-09T23:41:47"/>
-                    <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$23_41_48_046989LWNRHXM" CreationDate="2017-04-09T23:41:48"/>
-                        <Lift TargetValue="1" Name="ODMR$23_41_48_195581QFEAVIE" CreationDate="2017-04-09T23:41:48"/>
-                    </Lifts>
-                    <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$23_41_48_300396JOPWGKY" CreationDate="2017-04-09T23:41:48"/>
-                        <ROC TargetValue="1" Name="ODMR$23_41_48_416430EBDATXR" CreationDate="2017-04-09T23:41:48"/>
+                        <ROC TargetValue="0" Name="ODMR$05_11_44_774476CMZPSGQ" CreationDate="2017-08-21T05:11:44"/>
+                        <ROC TargetValue="1" Name="ODMR$05_11_44_885738FUUXGFD" CreationDate="2017-08-21T05:11:45"/>
                         <AreaUnderCurve Area="1.0" TargetValue="0"/>
                         <AreaUnderCurve Area="1.0" TargetValue="1"/>
                     </ROCs>
                 </ClassificationResult>
             </Results>
         </ClassificationBuild>
-        <AnomalyDetectionBuild Id="10056" Name="異常構築" Status="Ready">
-            <Icon XCOORD="553" YCOORD="370"></Icon>
+        <AnomalyDetectionBuild Id="10110" Name="異常構築" Status="Complete">
+            <Icon XCOORD="568" YCOORD="341"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
             </Parallelism>
             <BuildDataSource SourceId="10041"/>
             <CaseAttributes/>
-            <MiningAttributes AutoSpec="Yes">
-                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
-                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
+            <MiningAttributes AutoSpec="No">
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
                 <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ID" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
             </MiningAttributes>
             <Stoplists>
                 <Stoplist Id="1" Name="Default" Type="Basic" Language="ENGLISH" DBName="">
@@ -1251,40 +1277,22 @@ WHERE
                 </Theme>
             </TextSettings>
             <TextAttributes/>
-            <HeuristicSummaryResult StatisticTable="ODMR$00_47_25_370255OHYYFZX">
-                <Attribute Name="ANOMALY">
-                    <Reason Type="INPUT_NONE"/>
-                    <Reason Type="NUM_TO_CAT_MINING_TYPE"/>
-                </Attribute>
-                <Attribute Name="MODEL">
-                    <Reason Type="INPUT_NONE"/>
-                </Attribute>
-            </HeuristicSummaryResult>
             <Models>
-                <AnomalyDetectionModel Id="10081" Name="ANOM_SVM_1_14" Status="Ready" CreationDate="2017-04-20T00:47:29" Annotation="" UseForOutput="true">
+                <AnomalyDetectionModel Id="10109" Name="ANOM_SVM_2_4" Status="Complete" CreationDate="2017-08-21T05:24:08" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
                             <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="DEVICE1" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="Yes" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ID" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
                         </MiningAttributes>
-                        <HeuristicResult StatisticTable="ODMR$00_47_25_370255OHYYFZX">
-                            <Attribute Name="ANOMALY">
-                                <Reason Type="CONSTANT_LIMIT"/>
-                                <Reason Type="NUM_TO_CAT_MINING_TYPE"/>
-                            </Attribute>
-                            <Attribute Name="MODEL">
-                                <Reason Type="CONSTANT_LIMIT"/>
-                            </Attribute>
-                        </HeuristicResult>
                     </InputMiningData>
                     <AnomalyDetectionAlgo>
                         <SVMS_ACTIVE_LEARNING>SVMS_AL_ENABLE</SVMS_ACTIVE_LEARNING>
@@ -1294,8 +1302,8 @@ WHERE
                 </AnomalyDetectionModel>
             </Models>
         </AnomalyDetectionBuild>
-        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10034" Name="適用 1" Status="Ready">
-            <Icon XCOORD="653" YCOORD="266"></Icon>
+        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10105" Name="分類モデルの適用" Status="Complete">
+            <Icon XCOORD="680" YCOORD="245"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -1306,35 +1314,35 @@ WHERE
                     <TopN/>
                 </Method>
             </CacheSettings>
-            <SQLExpression>"N$10034" as (SELECT 
-"ID", 
-PREDICTION("CLAS_SVM_1_14" USING *) "CLAS_SVM_1_5_PRED", 
-PREDICTION_PROBABILITY("CLAS_SVM_1_14" USING *) "CLAS_SVM_1_5_PROB"
+            <SQLExpression>"N$10105" as (SELECT 
+"TIME_SERIAL", 
+PREDICTION("CLAS_SVM_1_4" USING *) "CLAS_SVM_1_4_PRED", 
+PREDICTION_PROBABILITY("CLAS_SVM_1_4" USING *) "CLAS_SVM_1_4_PROB"
 FROM {INPUT_SOURCE} )</SQLExpression>
             <SupplementalAttributes AutoSpec="No">
-                <Attribute Name="ID" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </SupplementalAttributes>
             <OutputColumns AutoSpec="No">
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10016" Schema="" Name="CLAS_SVM_1_14" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10078"/>
+                    <Model IsModelBuilt="true" NodeId="10103" Schema="" Name="CLAS_SVM_1_4" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10101"/>
                     <Prediction>
                         <CostOption>
                             <None/>
                         </CostOption>
-                        <Column Name="CLAS_SVM_1_5_PRED"/>
+                        <Column Name="CLAS_SVM_1_4_PRED"/>
                     </Prediction>
                 </OutputColumn>
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10016" Schema="" Name="CLAS_SVM_1_14" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10078"/>
+                    <Model IsModelBuilt="true" NodeId="10103" Schema="" Name="CLAS_SVM_1_4" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10101"/>
                     <PredictionProbability>
-                        <Column Name="CLAS_SVM_1_5_PROB"/>
+                        <Column Name="CLAS_SVM_1_4_PROB"/>
                     </PredictionProbability>
                 </OutputColumn>
             </OutputColumns>
             <CaseAttributes/>
         </Apply>
-        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10052" Name="適用" Status="Ready">
-            <Icon XCOORD="654" YCOORD="370"></Icon>
+        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10115" Name="異常モデルの適用" Status="Complete">
+            <Icon XCOORD="683" YCOORD="341"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -1345,32 +1353,35 @@ FROM {INPUT_SOURCE} )</SQLExpression>
                     <TopN/>
                 </Method>
             </CacheSettings>
-            <SQLExpression>"N$10052" as (SELECT 
-PREDICTION("ANOM_SVM_1_14" USING *) "ANOM_SVM_1_14_PRED", 
-PREDICTION_PROBABILITY("ANOM_SVM_1_14" USING *) "ANOM_SVM_1_14_PROB"
+            <SQLExpression>"N$10115" as (SELECT 
+"TIME_SERIAL", 
+PREDICTION("ANOM_SVM_2_4" USING *) "ANOM_SVM_2_4_PRED", 
+PREDICTION_PROBABILITY("ANOM_SVM_2_4" USING *) "ANOM_SVM_2_4_PROB"
 FROM {INPUT_SOURCE} )</SQLExpression>
-            <SupplementalAttributes AutoSpec="No"/>
+            <SupplementalAttributes AutoSpec="No">
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
+            </SupplementalAttributes>
             <OutputColumns AutoSpec="Yes">
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10056" Schema="" Name="ANOM_SVM_1_14" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10081"/>
+                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_2_4" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10109"/>
                     <Prediction>
                         <CostOption>
                             <None/>
                         </CostOption>
-                        <Column Name="ANOM_SVM_1_14_PRED"/>
+                        <Column Name="ANOM_SVM_2_4_PRED"/>
                     </Prediction>
                 </OutputColumn>
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10056" Schema="" Name="ANOM_SVM_1_14" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10081"/>
+                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_2_4" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10109"/>
                     <PredictionProbability>
-                        <Column Name="ANOM_SVM_1_14_PROB"/>
+                        <Column Name="ANOM_SVM_2_4_PROB"/>
                     </PredictionProbability>
                 </OutputColumn>
             </OutputColumns>
             <CaseAttributes/>
         </Apply>
-        <Graph ViewName="OUTPUT_2_5" ViewDirty="true" SampleDirty="true" Id="10071" Name="グラフ" Status="Ready">
-            <Icon XCOORD="782" YCOORD="200"></Icon>
+        <Graph ViewName="OUTPUT_2_5" ViewDirty="true" SampleDirty="true" Id="10071" Name="分類モデル適用結果" Status="Ready">
+            <Icon XCOORD="912" YCOORD="248"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -1382,25 +1393,25 @@ FROM {INPUT_SOURCE} )</SQLExpression>
                 </Method>
             </CacheSettings>
             <SQLExpression>"N$10071" as (SELECT 
-"CLAS_SVM_1_5_PRED"
-, "CLAS_SVM_1_5_PROB"
-, "ID"
+"CLAS_SVM_1_4_PRED"
+, "CLAS_SVM_1_4_PROB"
+, "TIME_SERIAL"
 
 FROM
 {INPUT_SOURCE}
  )</SQLExpression>
             <GraphSettings>
-                <GraphSetting Name="グラフ1" Type="Line" Id="0805d637-0ba9-4299-a03c-be54ae9205ca">
+                <GraphSetting Name="グラフ1" Type="Line" Id="e831b3a1-ee85-4b1b-8abb-fe55038a53f3">
                     <Comment></Comment>
-                    <XAttribute Name="ID" DataType="NUMBER" Status="Valid"/>
+                    <XAttribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
                     <XBinningSettings BinningEnabled="false" BinningKind="EqualWidth">
                         <NumericBinCount>10</NumericBinCount>
                     </XBinningSettings>
                     <YAttributes>
-                        <YAttribute Name="CLAS_SVM_1_5_PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
+                        <YAttribute Name="CLAS_SVM_1_4_PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
                     </YAttributes>
                     <GroupByOption GroupByEnabled="true">
-                        <GroupByAttribute Name="CLAS_SVM_1_5_PRED" DataType="NUMBER" Status="Valid"/>
+                        <GroupByAttribute Name="CLAS_SVM_1_4_PRED" DataType="NUMBER" Status="Valid"/>
                         <BinningSettings BinningEnabled="false" BinningKind="EqualWidth">
                             <NumericBinCount>10</NumericBinCount>
                         </BinningSettings>
@@ -1408,76 +1419,142 @@ FROM
                 </GraphSetting>
             </GraphSettings>
             <GraphSourceAttributes>
-                <Attribute Name="CLAS_SVM_1_5_PRED" DataType="NUMBER" Status="Valid"/>
-                <Attribute Name="CLAS_SVM_1_5_PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
-                <Attribute Name="ID" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="CLAS_SVM_1_4_PRED" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="CLAS_SVM_1_4_PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </GraphSourceAttributes>
             <SampleSettings UseFullData="false" GenerateCache="true">
                 <NumberOfRows>2000</NumberOfRows>
                 <Method>
                     <Random Seed="12345"/>
                 </Method>
-                <OutputTable Name="ODMR$00_35_04_615905QXZEOKN" CreationDate="2017-04-20T00:35:05"/>
+                <OutputTable Name="ODMR$19_07_49_944761IHDRFEA" CreationDate="2016-12-07T19:07:50"/>
+            </SampleSettings>
+        </Graph>
+        <Graph ViewName="OUTPUT_3_4" ViewDirty="true" SampleDirty="true" Id="10118" Name="異常モデル適用結果" Status="Complete">
+            <Icon XCOORD="910" YCOORD="342"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10118" as (SELECT 
+"ANOM_SVM_2_4_PRED"
+, "ANOM_SVM_2_4_PROB"
+, "TIME_SERIAL"
+
+FROM
+{INPUT_SOURCE}
+ )</SQLExpression>
+            <GraphSettings>
+                <GraphSetting Name="グラフ2" Type="Line" Id="3c75e85e-7836-4271-a86d-98b4656ef9ed">
+                    <Comment></Comment>
+                    <XAttribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
+                    <XBinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                        <NumericBinCount>10</NumericBinCount>
+                    </XBinningSettings>
+                    <YAttributes>
+                        <YAttribute Name="ANOM_SVM_2_4_PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
+                    </YAttributes>
+                    <GroupByOption GroupByEnabled="true">
+                        <GroupByAttribute Name="ANOM_SVM_2_4_PRED" DataType="NUMBER" Status="Valid"/>
+                        <BinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                            <NumericBinCount>10</NumericBinCount>
+                        </BinningSettings>
+                    </GroupByOption>
+                </GraphSetting>
+            </GraphSettings>
+            <GraphSourceAttributes>
+                <Attribute Name="ANOM_SVM_2_4_PRED" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="ANOM_SVM_2_4_PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
+                <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
+            </GraphSourceAttributes>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+                <OutputTable Name="ODMR$05_24_14_389889GTFSNCX" CreationDate="2017-08-21T05:24:15"/>
             </SampleSettings>
         </Graph>
     </Nodes>
     <Links>
-        <Link Id="10022" From="10002" To="10021" Name="リンク" Label="元 &quot;DEVICE&quot; 先 &quot;デバイス絞り込み&quot;">
+        <Link Id="10022" From="10002" To="10021" Name="リンク" Label="元 &quot;DEVICE（Database）&quot; 先 &quot;モデルAのデバイス&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10024" From="10021" To="10006" Name="リンク" Label="元 &quot;デバイス絞り込み&quot; 先 &quot;結合&quot;">
+        <Link Id="10024" From="10021" To="10006" Name="リンク" Label="元 &quot;モデルAのデバイス&quot; 先 &quot;結合&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10026" From="10025" To="10006" Name="リンク" Label="元 &quot;SOUND&quot; 先 &quot;結合&quot;">
+        <Link Id="10028" From="10006" To="10027" Name="リンク" Label="元 &quot;結合&quot; 先 &quot;TRAINING&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10028" From="10006" To="10027" Name="リンク" Label="元 &quot;結合&quot; 先 &quot;OUTPUT_1_5&quot;">
+        <Link Id="10042" From="10027" To="10041" Name="リンク" Label="元 &quot;TRAINING&quot; 先 &quot;正常データ絞り込み&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10029" From="10027" To="10016" Name="リンク" Label="元 &quot;OUTPUT_1_5&quot; 先 &quot;分類構築&quot;">
+        <Link Id="10083" From="10025" To="10082" Name="リンク" Label="元 &quot;SOUND（Hadoop）&quot; 先 &quot;8月20日のデータ&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10035" From="10016" To="10034" Name="リンク" Label="元 &quot;分類構築&quot; 先 &quot;適用 1&quot;">
+        <Link Id="10084" From="10082" To="10006" Name="リンク" Label="元 &quot;8月20日のデータ&quot; 先 &quot;結合&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10042" From="10027" To="10041" Name="リンク" Label="元 &quot;OUTPUT_1_5&quot; 先 &quot;正常データ絞り込み&quot;">
+        <Link Id="10096" From="10025" To="10095" Name="リンク" Label="元 &quot;SOUND（Hadoop）&quot; 先 &quot;8月21日のデータ&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10057" From="10041" To="10056" Name="リンク" Label="元 &quot;正常データ絞り込み&quot; 先 &quot;異常構築&quot;">
+        <Link Id="10104" From="10027" To="10103" Name="リンク" Label="元 &quot;TRAINING&quot; 先 &quot;分類構築&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10058" From="10056" To="10052" Name="リンク" Label="元 &quot;異常構築&quot; 先 &quot;適用&quot;">
+        <Link Id="10106" From="10103" To="10105" Name="リンク" Label="元 &quot;分類構築&quot; 先 &quot;分類モデルの適用&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10073" From="10034" To="10071" Name="リンク" Label="元 &quot;適用 1&quot; 先 &quot;グラフ&quot;">
+        <Link Id="10107" From="10095" To="10105" Name="リンク" Label="元 &quot;8月21日のデータ&quot; 先 &quot;分類モデルの適用&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10075" From="10074" To="10034" Name="リンク" Label="元 &quot;SOUND_TEST&quot; 先 &quot;適用 1&quot;">
+        <Link Id="10108" From="10105" To="10071" Name="リンク" Label="元 &quot;分類モデルの適用&quot; 先 &quot;分類モデル適用結果&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10076" From="10074" To="10052" Name="リンク" Label="元 &quot;SOUND_TEST&quot; 先 &quot;適用&quot;">
+        <Link Id="10111" From="10041" To="10110" Name="リンク" Label="元 &quot;正常データ絞り込み&quot; 先 &quot;異常構築&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10116" From="10110" To="10115" Name="リンク" Label="元 &quot;異常構築&quot; 先 &quot;異常モデルの適用&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10117" From="10095" To="10115" Name="リンク" Label="元 &quot;8月21日のデータ&quot; 先 &quot;異常モデルの適用&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10119" From="10115" To="10118" Name="リンク" Label="元 &quot;異常モデルの適用&quot; 先 &quot;異常モデル適用結果&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
