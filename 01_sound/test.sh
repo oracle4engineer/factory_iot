@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export NLS_LANG=Japanese_Japan.AL32UTF8
+
 echo "*******************************"
 echo "Loading sample data into HDFS.."
 echo "*******************************"
