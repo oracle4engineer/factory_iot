@@ -4,8 +4,7 @@ CREATE OR REPLACE DIRECTORY EXTERNAL_DIR AS '/home/oracle/factory_iot';
 DROP TABLE sound;
 
 CREATE TABLE sound (
-  id          NUMBER(10)
-, device      VARCHAR2(255)
+  device      VARCHAR2(255)
 , time_start  VARCHAR2(255)
 , time_end    VARCHAR2(255)
 , frequency   NUMBER(10,2)

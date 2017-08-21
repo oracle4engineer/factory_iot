@@ -4,7 +4,8 @@ echo "*******************************"
 echo "Loading sample data into HDFS.."
 echo "*******************************"
 
-hadoop fs -copyFromLocal sample/sound_0001.csv /user/oracle/sound
+hadoop fs -copyFromLocal sample/sound_0820.csv /user/oracle/sound
+hadoop fs -appendToFile sample/sound_0821.csv /user/oracle/sound
 hadoop fs -ls /user/oracle/sound
 
 echo "*********************"

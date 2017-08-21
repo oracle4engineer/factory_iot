@@ -1,7 +1,6 @@
 drop table sound;
 create table sound (
-  id int
-, device string
+  device string
 , time_start string
 , time_end string
 , frequency float
