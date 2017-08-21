@@ -35,7 +35,6 @@ Open SQL Developer
 Run the test script.
 
     $ cd 01_sound
-    $ export NLS_LANG=Japanese_Japan.AL32UTF8
     $ sh test.sh
 
 Import and run the workflow "Detect Anomaly with Sound" on Data Miner GUI.
