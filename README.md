@@ -39,7 +39,7 @@ Run the test script.
 
 Import and run the workflow "Detect Anomaly with Sound" on Data Miner GUI.
 
-    01_sound/sqldeveloper/workflow.xml
+    01_sound/sqldeveloper/workflow_ja.xml
 
 ## #02 Process
 
@@ -50,4 +50,4 @@ Run the test script.
 
 Import and run the workflow "Detect Causing Processes" on Data Miner GUI.
 
-    02_process/sqldeveloper/workflow_ja.xml
+    02_process/sqldeveloper/workflow.xml
