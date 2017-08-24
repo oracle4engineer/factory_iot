@@ -50,4 +50,4 @@ Run the test script.
 
 Import and run the workflow "Detect Causing Processes" on Data Miner GUI.
 
-    02_process/sqldeveloper/workflow.xml
+    02_process/sqldeveloper/workflow_ja.xml
