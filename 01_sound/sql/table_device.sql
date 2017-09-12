@@ -17,6 +17,8 @@ into DEVICE (DEVICE,MODEL) values ('device08','modelC')
 into DEVICE (DEVICE,MODEL) values ('device09','modelC')
 SELECT * FROM dual;
 
+COMMIT;
+
 SET LINES 100
 COL model FOR a20
 COL device FOR a20
