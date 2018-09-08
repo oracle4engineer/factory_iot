@@ -707,7 +707,7 @@ WHERE
             </TestDataSource>
             <TargetAttribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
             <Models>
-                <NaiveBayesModel Id="10139" Name="CLAS_NB_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <NaiveBayesModel Id="10134" Name="CLAS_NB_1_5" Status="Complete" CreationDate="2018-05-22T11:46:05" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -724,7 +724,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_176693GWFHQJU"/>
+                        <Balanced WeightsTable="ODMR$11_45_59_732774YZMVFMF"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -734,7 +734,7 @@ WHERE
                         <NABS_SINGLETON_THRESHOLD>0.0</NABS_SINGLETON_THRESHOLD>
                     </NaiveBayesAlgo>
                 </NaiveBayesModel>
-                <DecisionTreeModel Id="10138" Name="CLAS_DT_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <DecisionTreeModel Id="10133" Name="CLAS_DT_1_5" Status="Complete" CreationDate="2018-05-22T11:46:05" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -751,7 +751,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_158916JOYEKHI"/>
+                        <Balanced WeightsTable="ODMR$11_45_59_714094XDZCKDI"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -765,7 +765,7 @@ WHERE
                         <TREE_TERM_MINREC_SPLIT>20</TREE_TERM_MINREC_SPLIT>
                     </DecisionTreeAlgo>
                 </DecisionTreeModel>
-                <CSupportVectorMachineModel Id="10137" Name="CLAS_SVM_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <CSupportVectorMachineModel Id="10132" Name="CLAS_SVM_1_5" Status="Complete" CreationDate="2018-05-22T11:46:05" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -782,7 +782,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_197731SXYVLSS"/>
+                        <Balanced WeightsTable="ODMR$11_45_59_748815QLKVIMB"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -792,7 +792,7 @@ WHERE
                         <SVMS_CONV_TOLERANCE>0.001</SVMS_CONV_TOLERANCE>
                     </CSupportVectorMachineAlgo>
                 </CSupportVectorMachineModel>
-                <CGeneralizedLinearModel Id="10136" Name="CLAS_GLM_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <CGeneralizedLinearModel Id="10131" Name="CLAS_GLM_1_5" Status="Complete" CreationDate="2018-05-22T11:46:05" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -809,7 +809,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_223130UOKAVEN"/>
+                        <Balanced WeightsTable="ODMR$11_45_59_763640BVNIAWM"/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -824,60 +824,60 @@ WHERE
                 <TopNTargets Value="5"/>
             </TestSettings>
             <Results genAccuracyMetrics="true" genConfusionMatrix="true" genROC="true" genLift="true" genTuning="false">
-                <ClassificationResult ModelId="10137" Status="Complete" Name="CLAS_SVM_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_124389VYIEQQI" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_675622BBBMUQB" CreationDate="2018-05-22T22:47:49"/>
+                <ClassificationResult ModelId="10133" Status="Complete" Name="CLAS_DT_1_5" CreationDate="2018-05-22T11:46:13">
+                    <TestMetrics Name="ODMR$11_46_12_063815WFRHPGD" CreationDate="2018-05-22T11:46:12"/>
+                    <ConfusionMatrix Name="ODMR$11_46_11_487603QLKFTJM" CreationDate="2018-05-22T11:46:12"/>
                     <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_219534CDPIZYQ" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_546613QOFRNYB" CreationDate="2018-05-22T22:47:49"/>
+                        <Lift TargetValue="0" Name="ODMR$11_46_12_276179GSNSCIA" CreationDate="2018-05-22T11:46:12"/>
+                        <Lift TargetValue="1" Name="ODMR$11_46_12_471834EEBKRHP" CreationDate="2018-05-22T11:46:12"/>
                     </Lifts>
                     <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_692105GTJKBTP" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_831305TUQBQAY" CreationDate="2018-05-22T22:47:49"/>
+                        <ROC TargetValue="0" Name="ODMR$11_46_12_620988CJTCFNT" CreationDate="2018-05-22T11:46:12"/>
+                        <ROC TargetValue="1" Name="ODMR$11_46_12_742257ZQQDUEI" CreationDate="2018-05-22T11:46:12"/>
                         <AreaUnderCurve Area="1.0" TargetValue="0"/>
                         <AreaUnderCurve Area="1.0" TargetValue="1"/>
                     </ROCs>
                 </ClassificationResult>
-                <ClassificationResult ModelId="10139" Status="Complete" Name="CLAS_NB_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_036319DQXLRVV" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_659366KRLIMRO" CreationDate="2018-05-22T22:47:49"/>
+                <ClassificationResult ModelId="10134" Status="Complete" Name="CLAS_NB_1_5" CreationDate="2018-05-22T11:46:13">
+                    <TestMetrics Name="ODMR$11_46_12_066509NHOKLEO" CreationDate="2018-05-22T11:46:12"/>
+                    <ConfusionMatrix Name="ODMR$11_46_11_487220NUCLYUP" CreationDate="2018-05-22T11:46:12"/>
                     <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_166417EMBEWNE" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_484412GXUIBZM" CreationDate="2018-05-22T22:47:49"/>
+                        <Lift TargetValue="0" Name="ODMR$11_46_12_157287OYDFSUM" CreationDate="2018-05-22T11:46:12"/>
+                        <Lift TargetValue="1" Name="ODMR$11_46_12_491395SOJAOVV" CreationDate="2018-05-22T11:46:12"/>
                     </Lifts>
                     <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_625818BNTXVOW" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_785267PIMOSCP" CreationDate="2018-05-22T22:47:49"/>
+                        <ROC TargetValue="0" Name="ODMR$11_46_12_590635MFCQWIM" CreationDate="2018-05-22T11:46:12"/>
+                        <ROC TargetValue="1" Name="ODMR$11_46_12_704787VNKDYJN" CreationDate="2018-05-22T11:46:12"/>
                         <AreaUnderCurve Area="1.0" TargetValue="0"/>
                         <AreaUnderCurve Area="1.0" TargetValue="1"/>
                     </ROCs>
                 </ClassificationResult>
-                <ClassificationResult ModelId="10138" Status="Complete" Name="CLAS_DT_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_066758WRWDYLE" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_674597ABBDDTW" CreationDate="2018-05-22T22:47:49"/>
+                <ClassificationResult ModelId="10132" Status="Complete" Name="CLAS_SVM_1_5" CreationDate="2018-05-22T11:46:13">
+                    <TestMetrics Name="ODMR$11_46_12_053803BIBZUKS" CreationDate="2018-05-22T11:46:12"/>
+                    <ConfusionMatrix Name="ODMR$11_46_11_491479BUHKISW" CreationDate="2018-05-22T11:46:12"/>
                     <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_331128SUWJZEW" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_593294TJAAQRU" CreationDate="2018-05-22T22:47:49"/>
+                        <Lift TargetValue="0" Name="ODMR$11_46_12_135427JZLAPPW" CreationDate="2018-05-22T11:46:12"/>
+                        <Lift TargetValue="1" Name="ODMR$11_46_12_472596ZNXYANB" CreationDate="2018-05-22T11:46:12"/>
                     </Lifts>
                     <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_728224YWSEZON" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_854449FPQQSDZ" CreationDate="2018-05-22T22:47:49"/>
+                        <ROC TargetValue="0" Name="ODMR$11_46_12_629749VNXRNSS" CreationDate="2018-05-22T11:46:12"/>
+                        <ROC TargetValue="1" Name="ODMR$11_46_12_730949ZKMHIGB" CreationDate="2018-05-22T11:46:12"/>
                         <AreaUnderCurve Area="1.0" TargetValue="0"/>
                         <AreaUnderCurve Area="1.0" TargetValue="1"/>
                     </ROCs>
                 </ClassificationResult>
-                <ClassificationResult ModelId="10136" Status="Complete" Name="CLAS_GLM_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_093899LSIHECI" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_676795VZAABTA" CreationDate="2018-05-22T22:47:49"/>
+                <ClassificationResult ModelId="10131" Status="Complete" Name="CLAS_GLM_1_5" CreationDate="2018-05-22T11:46:13">
+                    <TestMetrics Name="ODMR$11_46_12_036171MLTCIAX" CreationDate="2018-05-22T11:46:12"/>
+                    <ConfusionMatrix Name="ODMR$11_46_11_536103VHRGBHC" CreationDate="2018-05-22T11:46:12"/>
                     <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_234764PVMGQVA" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_580260DXEPAHL" CreationDate="2018-05-22T22:47:49"/>
+                        <Lift TargetValue="0" Name="ODMR$11_46_12_135061FUBNLBT" CreationDate="2018-05-22T11:46:12"/>
+                        <Lift TargetValue="1" Name="ODMR$11_46_12_459484WEPBKAU" CreationDate="2018-05-22T11:46:12"/>
                     </Lifts>
                     <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_709158GMPKPWR" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_882744XLJCNOY" CreationDate="2018-05-22T22:47:50"/>
-                        <AreaUnderCurve Area="0.8672839403152466" TargetValue="0"/>
-                        <AreaUnderCurve Area="0.8703703880310059" TargetValue="1"/>
+                        <ROC TargetValue="0" Name="ODMR$11_46_12_578595CRRGLBT" CreationDate="2018-05-22T11:46:12"/>
+                        <ROC TargetValue="1" Name="ODMR$11_46_12_706896OYCKABO" CreationDate="2018-05-22T11:46:12"/>
+                        <AreaUnderCurve Area="0.6882715821266174" TargetValue="0"/>
+                        <AreaUnderCurve Area="0.6913580298423767" TargetValue="1"/>
                     </ROCs>
                 </ClassificationResult>
             </Results>
@@ -1278,7 +1278,7 @@ WHERE
             </TextSettings>
             <TextAttributes/>
             <Models>
-                <AnomalyDetectionModel Id="10135" Name="ANOM_SVM_1_27" Status="Complete" CreationDate="2018-05-22T22:48:36" Annotation="" UseForOutput="true">
+                <AnomalyDetectionModel Id="10130" Name="ANOM_SVM_1_5" Status="Complete" CreationDate="2018-05-22T11:50:06" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -1316,15 +1316,15 @@ WHERE
             </CacheSettings>
             <SQLExpression>"N$10105" as (SELECT 
 "TIME_SERIAL", 
-PREDICTION("CLAS_SVM_1_27" USING *) "CLAS_SVM_1_4_PRED", 
-PREDICTION_PROBABILITY("CLAS_SVM_1_27" USING *) "CLAS_SVM_1_4_PROB"
+PREDICTION("CLAS_SVM_1_5" USING *) "CLAS_SVM_1_4_PRED", 
+PREDICTION_PROBABILITY("CLAS_SVM_1_5" USING *) "CLAS_SVM_1_4_PROB"
 FROM {INPUT_SOURCE} )</SQLExpression>
             <SupplementalAttributes AutoSpec="No">
                 <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </SupplementalAttributes>
             <OutputColumns AutoSpec="No">
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_27" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10137"/>
+                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_5" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10132"/>
                     <Prediction>
                         <CostOption>
                             <None/>
@@ -1333,7 +1333,7 @@ FROM {INPUT_SOURCE} )</SQLExpression>
                     </Prediction>
                 </OutputColumn>
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_27" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10137"/>
+                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_5" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10132"/>
                     <PredictionProbability>
                         <Column Name="CLAS_SVM_1_4_PROB"/>
                     </PredictionProbability>
@@ -1355,15 +1355,15 @@ FROM {INPUT_SOURCE} )</SQLExpression>
             </CacheSettings>
             <SQLExpression>"N$10115" as (SELECT 
 "TIME_SERIAL", 
-PREDICTION("ANOM_SVM_1_27" USING *) "ANOM_SVM_1_10_PRED", 
-PREDICTION_PROBABILITY("ANOM_SVM_1_27" USING *) "ANOM_SVM_1_10_PROB"
+PREDICTION("ANOM_SVM_1_5" USING *) "ANOM_SVM_1_10_PRED", 
+PREDICTION_PROBABILITY("ANOM_SVM_1_5" USING *) "ANOM_SVM_1_10_PROB"
 FROM {INPUT_SOURCE} )</SQLExpression>
             <SupplementalAttributes AutoSpec="No">
                 <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </SupplementalAttributes>
             <OutputColumns AutoSpec="No">
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_27" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10135"/>
+                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_5" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10130"/>
                     <Prediction>
                         <CostOption>
                             <None/>
@@ -1372,7 +1372,7 @@ FROM {INPUT_SOURCE} )</SQLExpression>
                     </Prediction>
                 </OutputColumn>
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_27" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10135"/>
+                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_5" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10130"/>
                     <PredictionProbability>
                         <Column Name="ANOM_SVM_1_10_PROB"/>
                     </PredictionProbability>
@@ -1428,7 +1428,7 @@ FROM
                 <Method>
                     <Random Seed="12345"/>
                 </Method>
-                <OutputTable Name="ODMR$22_47_57_687368NHVNDQX" CreationDate="2018-05-22T22:47:58"/>
+                <OutputTable Name="ODMR$11_52_56_265593HPLJNRN" CreationDate="2018-05-22T11:52:57"/>
             </SampleSettings>
         </Graph>
         <Graph ViewName="OUTPUT_2_5" ViewDirty="true" SampleDirty="true" Id="10118" Name="Result 2" Status="Complete">
@@ -1479,7 +1479,7 @@ FROM
                 <Method>
                     <Random Seed="12345"/>
                 </Method>
-                <OutputTable Name="ODMR$22_48_57_439080UBUONVZ" CreationDate="2018-05-22T22:48:58"/>
+                <OutputTable Name="ODMR$11_52_55_846582CFUSWHP" CreationDate="2018-05-22T11:52:57"/>
             </SampleSettings>
         </Graph>
     </Nodes>

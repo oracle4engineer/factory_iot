@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <WorkflowProcess Version="12.2.0.0.1" DBVersion="12.1.0.2.0" Schema="" xmlns="http://xmlns.oracle.com/odmr11">
     <Nodes>
-        <DataSource Id="10002" Name="DEVICE - Database" Status="Complete">
+        <DataSource Id="10002" Name="DEVICE（Database）" Status="Complete">
             <Icon XCOORD="21" YCOORD="398"></Icon>
             <Messages/>
             <Parallelism Enable="false">
@@ -27,7 +27,7 @@ from "FACTORY_IOT"."DEVICE"  )</SQLExpression>
                 <NumberOfValues>10000</NumberOfValues>
             </DataGuideSettings>
         </DataSource>
-        <DataSource Id="10025" Name="SOUND - Hadoop" Status="Complete">
+        <DataSource Id="10025" Name="SOUND（Hadoop）" Status="Complete">
             <Icon XCOORD="26" YCOORD="154"></Icon>
             <Messages/>
             <Parallelism Enable="false">
@@ -68,7 +68,7 @@ from "FACTORY_IOT"."SOUND"  )</SQLExpression>
             </DataGuideSettings>
             <includeAllAvailableAttributes>false</includeAllAvailableAttributes>
         </DataSource>
-        <CreateTable TableName="TRAINING_EN" Table="true" AutoSpec="Yes" Id="10027" Name="TRAINING" Status="Complete">
+        <CreateTable TableName="TRAINING6" Table="true" AutoSpec="Yes" Id="10027" Name="TRAINING6" Status="Complete">
             <Icon XCOORD="290" YCOORD="282"></Icon>
             <Messages/>
             <Parallelism Enable="false">
@@ -90,7 +90,7 @@ from "FACTORY_IOT"."SOUND"  )</SQLExpression>
  "TEMPERATURE" ,
  "TIME_END" ,
  "TIME_START" ,
- "TIME_SERIAL"  FROM "TRAINING_EN")</SQLExpression>
+ "TIME_SERIAL"  FROM "TRAINING6")</SQLExpression>
             <DBAttributes>
                 <DBAttribute Key="No" Index="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                 <DBAttribute Key="No" Index="No" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
@@ -106,7 +106,7 @@ from "FACTORY_IOT"."SOUND"  )</SQLExpression>
             </DBAttributes>
             <JSONColumns/>
         </CreateTable>
-        <Join UseCartesian="false" Id="10006" Name="Join" Status="Complete">
+        <Join UseCartesian="false" Id="10006" Name="結合" Status="Complete">
             <Icon XCOORD="164" YCOORD="281"></Icon>
             <Messages/>
             <Parallelism Enable="false">
@@ -119,46 +119,46 @@ from "FACTORY_IOT"."SOUND"  )</SQLExpression>
                 </Method>
             </CacheSettings>
             <SQLExpression>"N$10006" as (SELECT 
-"DEVICE Model A"."DEVICE"
-, "DEVICE Model A"."MODEL"
-, "SOUND Aug 20"."ANOMALY"
-, "SOUND Aug 20"."DEVICE" "DEVICE1"
-, "SOUND Aug 20"."ENERGY"
-, "SOUND Aug 20"."FREQUENCY"
-, "SOUND Aug 20"."HUMIDITY"
-, "SOUND Aug 20"."TEMPERATURE"
-, "SOUND Aug 20"."TIME_END"
-, "SOUND Aug 20"."TIME_START"
-, "SOUND Aug 20"."TIME_SERIAL"
+"モデルAのデバイス"."DEVICE"
+, "モデルAのデバイス"."MODEL"
+, "8月20日のデータ"."ANOMALY"
+, "8月20日のデータ"."DEVICE" "DEVICE1"
+, "8月20日のデータ"."ENERGY"
+, "8月20日のデータ"."FREQUENCY"
+, "8月20日のデータ"."HUMIDITY"
+, "8月20日のデータ"."TEMPERATURE"
+, "8月20日のデータ"."TIME_END"
+, "8月20日のデータ"."TIME_START"
+, "8月20日のデータ"."TIME_SERIAL"
 
 FROM
-{INPUT_SOURCE:10082} "SOUND Aug 20"
-INNER JOIN {INPUT_SOURCE:10021} "DEVICE Model A"
-ON "SOUND Aug 20"."DEVICE" = "DEVICE Model A"."DEVICE"
+{INPUT_SOURCE:10082} "8月20日のデータ"
+INNER JOIN {INPUT_SOURCE:10021} "モデルAのデバイス"
+ON "8月20日のデータ"."DEVICE" = "モデルAのデバイス"."DEVICE"
 
  )</SQLExpression>
             <KeyColumns AutoSpec="No">
                 <JoinColumn Type="Inner">
-                    <LeftColumn NodeId="10082" NodeName="SOUND Aug 20" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
-                    <RightColumn NodeId="10021" NodeName="DEVICE Model A" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <LeftColumn NodeId="10082" NodeName="8月20日のデータ" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <RightColumn NodeId="10021" NodeName="モデルAのデバイス" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
                 </JoinColumn>
             </KeyColumns>
             <OutputColumns AutoSpec="Yes">
-                <RefDBColumn NodeId="10021" NodeName="DEVICE Model A" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10021" NodeName="DEVICE Model A" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="DEVICE" DataType="VARCHAR2" Status="Valid" Alias="DEVICE1"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
-                <RefDBColumn NodeId="10082" NodeName="SOUND Aug 20" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10021" NodeName="モデルAのデバイス" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10021" NodeName="モデルAのデバイス" Name="MODEL" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="DEVICE" DataType="VARCHAR2" Status="Valid" Alias="DEVICE1"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="ENERGY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="FREQUENCY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="HUMIDITY" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TEMPERATURE" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TIME_END" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TIME_START" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10082" NodeName="8月20日のデータ" Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </OutputColumns>
         </Join>
-        <RowFilter Id="10021" Name="DEVICE Model A" Status="Complete">
-            <Icon XCOORD="164" YCOORD="397"></Icon>
+        <RowFilter Id="10021" Name="モデルAのデバイス" Status="Complete">
+            <Icon XCOORD="167" YCOORD="398"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -183,7 +183,7 @@ WHERE
             </OutputColumns>
             <Filter>"MODEL"  = 'modelA'</Filter>
         </RowFilter>
-        <RowFilter Id="10041" Name="Only Normal" Status="Complete">
+        <RowFilter Id="10041" Name="正常データ絞り込み" Status="Complete">
             <Icon XCOORD="437" YCOORD="341"></Icon>
             <Messages/>
             <Parallelism Enable="false">
@@ -227,7 +227,7 @@ WHERE
             </OutputColumns>
             <Filter>"ANOMALY" = 0</Filter>
         </RowFilter>
-        <RowFilter Id="10082" Name="SOUND Aug 20" Status="Complete">
+        <RowFilter Id="10082" Name="8月20日のデータ" Status="Complete">
             <Icon XCOORD="163" YCOORD="154"></Icon>
             <Messages/>
             <Parallelism Enable="false">
@@ -267,8 +267,8 @@ WHERE
             </OutputColumns>
             <Filter>"TIME_START" LIKE '2017/08/20 %'</Filter>
         </RowFilter>
-        <RowFilter Id="10095" Name="SOUND Aug 21" Status="Complete">
-            <Icon XCOORD="484" YCOORD="154"></Icon>
+        <RowFilter Id="10095" Name="8月21日のデータ" Status="Complete">
+            <Icon XCOORD="789" YCOORD="153"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -307,8 +307,8 @@ WHERE
             </OutputColumns>
             <Filter>"TIME_START" LIKE '2017/08/21 %'</Filter>
         </RowFilter>
-        <ClassificationBuild Id="10103" Name="Classification" Status="Complete">
-            <Icon XCOORD="569" YCOORD="261"></Icon>
+        <ClassificationBuild Id="10103" Name="分類構築" Status="Ready">
+            <Icon XCOORD="569" YCOORD="246"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -707,7 +707,7 @@ WHERE
             </TestDataSource>
             <TargetAttribute Name="ANOMALY" DataType="NUMBER" Status="Valid"/>
             <Models>
-                <NaiveBayesModel Id="10139" Name="CLAS_NB_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <NaiveBayesModel Id="10129" Name="CLAS_NB_1_10" Status="Ready" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -724,7 +724,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_176693GWFHQJU"/>
+                        <Balanced/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -734,7 +734,7 @@ WHERE
                         <NABS_SINGLETON_THRESHOLD>0.0</NABS_SINGLETON_THRESHOLD>
                     </NaiveBayesAlgo>
                 </NaiveBayesModel>
-                <DecisionTreeModel Id="10138" Name="CLAS_DT_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <DecisionTreeModel Id="10128" Name="CLAS_DT_1_10" Status="Ready" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -751,7 +751,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_158916JOYEKHI"/>
+                        <Balanced/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -765,7 +765,7 @@ WHERE
                         <TREE_TERM_MINREC_SPLIT>20</TREE_TERM_MINREC_SPLIT>
                     </DecisionTreeAlgo>
                 </DecisionTreeModel>
-                <CSupportVectorMachineModel Id="10137" Name="CLAS_SVM_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <CSupportVectorMachineModel Id="10127" Name="CLAS_SVM_1_10" Status="Ready" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -782,7 +782,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_197731SXYVLSS"/>
+                        <Balanced/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -792,7 +792,7 @@ WHERE
                         <SVMS_CONV_TOLERANCE>0.001</SVMS_CONV_TOLERANCE>
                     </CSupportVectorMachineAlgo>
                 </CSupportVectorMachineModel>
-                <CGeneralizedLinearModel Id="10136" Name="CLAS_GLM_1_27" Status="Complete" CreationDate="2018-05-22T22:47:45" Annotation="" UseForOutput="true">
+                <CGeneralizedLinearModel Id="10126" Name="CLAS_GLM_1_10" Status="Ready" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -809,7 +809,7 @@ WHERE
                         </MiningAttributes>
                     </InputMiningData>
                     <Performance>
-                        <Balanced WeightsTable="ODMR$22_47_39_223130UOKAVEN"/>
+                        <Balanced/>
                     </Performance>
                     <Tuning>
                         <None/>
@@ -823,66 +823,9 @@ WHERE
             <TestSettings>
                 <TopNTargets Value="5"/>
             </TestSettings>
-            <Results genAccuracyMetrics="true" genConfusionMatrix="true" genROC="true" genLift="true" genTuning="false">
-                <ClassificationResult ModelId="10137" Status="Complete" Name="CLAS_SVM_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_124389VYIEQQI" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_675622BBBMUQB" CreationDate="2018-05-22T22:47:49"/>
-                    <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_219534CDPIZYQ" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_546613QOFRNYB" CreationDate="2018-05-22T22:47:49"/>
-                    </Lifts>
-                    <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_692105GTJKBTP" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_831305TUQBQAY" CreationDate="2018-05-22T22:47:49"/>
-                        <AreaUnderCurve Area="1.0" TargetValue="0"/>
-                        <AreaUnderCurve Area="1.0" TargetValue="1"/>
-                    </ROCs>
-                </ClassificationResult>
-                <ClassificationResult ModelId="10139" Status="Complete" Name="CLAS_NB_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_036319DQXLRVV" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_659366KRLIMRO" CreationDate="2018-05-22T22:47:49"/>
-                    <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_166417EMBEWNE" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_484412GXUIBZM" CreationDate="2018-05-22T22:47:49"/>
-                    </Lifts>
-                    <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_625818BNTXVOW" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_785267PIMOSCP" CreationDate="2018-05-22T22:47:49"/>
-                        <AreaUnderCurve Area="1.0" TargetValue="0"/>
-                        <AreaUnderCurve Area="1.0" TargetValue="1"/>
-                    </ROCs>
-                </ClassificationResult>
-                <ClassificationResult ModelId="10138" Status="Complete" Name="CLAS_DT_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_066758WRWDYLE" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_674597ABBDDTW" CreationDate="2018-05-22T22:47:49"/>
-                    <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_331128SUWJZEW" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_593294TJAAQRU" CreationDate="2018-05-22T22:47:49"/>
-                    </Lifts>
-                    <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_728224YWSEZON" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_854449FPQQSDZ" CreationDate="2018-05-22T22:47:49"/>
-                        <AreaUnderCurve Area="1.0" TargetValue="0"/>
-                        <AreaUnderCurve Area="1.0" TargetValue="1"/>
-                    </ROCs>
-                </ClassificationResult>
-                <ClassificationResult ModelId="10136" Status="Complete" Name="CLAS_GLM_1_27" CreationDate="2018-05-22T22:47:50">
-                    <TestMetrics Name="ODMR$22_47_49_093899LSIHECI" CreationDate="2018-05-22T22:47:49"/>
-                    <ConfusionMatrix Name="ODMR$22_47_48_676795VZAABTA" CreationDate="2018-05-22T22:47:49"/>
-                    <Lifts>
-                        <Lift TargetValue="0" Name="ODMR$22_47_49_234764PVMGQVA" CreationDate="2018-05-22T22:47:49"/>
-                        <Lift TargetValue="1" Name="ODMR$22_47_49_580260DXEPAHL" CreationDate="2018-05-22T22:47:49"/>
-                    </Lifts>
-                    <ROCs>
-                        <ROC TargetValue="0" Name="ODMR$22_47_49_709158GMPKPWR" CreationDate="2018-05-22T22:47:49"/>
-                        <ROC TargetValue="1" Name="ODMR$22_47_49_882744XLJCNOY" CreationDate="2018-05-22T22:47:50"/>
-                        <AreaUnderCurve Area="0.8672839403152466" TargetValue="0"/>
-                        <AreaUnderCurve Area="0.8703703880310059" TargetValue="1"/>
-                    </ROCs>
-                </ClassificationResult>
-            </Results>
+            <Results genAccuracyMetrics="true" genConfusionMatrix="true" genROC="true" genLift="true" genTuning="false"/>
         </ClassificationBuild>
-        <AnomalyDetectionBuild Id="10110" Name="Anomaly Detection" Status="Complete">
+        <AnomalyDetectionBuild Id="10110" Name="異常構築" Status="Complete">
             <Icon XCOORD="568" YCOORD="341"></Icon>
             <Messages/>
             <Parallelism Enable="false">
@@ -1278,7 +1221,7 @@ WHERE
             </TextSettings>
             <TextAttributes/>
             <Models>
-                <AnomalyDetectionModel Id="10135" Name="ANOM_SVM_1_27" Status="Complete" CreationDate="2018-05-22T22:48:36" Annotation="" UseForOutput="true">
+                <AnomalyDetectionModel Id="10125" Name="ANOM_SVM_1_10" Status="Complete" CreationDate="2017-08-23T23:03:46" Annotation="" UseForOutput="true">
                     <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
                         <MiningAttributes>
                             <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
@@ -1302,8 +1245,8 @@ WHERE
                 </AnomalyDetectionModel>
             </Models>
         </AnomalyDetectionBuild>
-        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10105" Name="Apply 1" Status="Complete">
-            <Icon XCOORD="712" YCOORD="261"></Icon>
+        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10105" Name="分類モデルの適用" Status="Ready">
+            <Icon XCOORD="680" YCOORD="245"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -1316,15 +1259,15 @@ WHERE
             </CacheSettings>
             <SQLExpression>"N$10105" as (SELECT 
 "TIME_SERIAL", 
-PREDICTION("CLAS_SVM_1_27" USING *) "CLAS_SVM_1_4_PRED", 
-PREDICTION_PROBABILITY("CLAS_SVM_1_27" USING *) "CLAS_SVM_1_4_PROB"
+PREDICTION("CLAS_SVM_1_10" USING *) "CLAS_SVM_1_4_PRED", 
+PREDICTION_PROBABILITY("CLAS_SVM_1_10" USING *) "CLAS_SVM_1_4_PROB"
 FROM {INPUT_SOURCE} )</SQLExpression>
             <SupplementalAttributes AutoSpec="No">
                 <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </SupplementalAttributes>
             <OutputColumns AutoSpec="No">
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_27" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10137"/>
+                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_10" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10127"/>
                     <Prediction>
                         <CostOption>
                             <None/>
@@ -1333,7 +1276,7 @@ FROM {INPUT_SOURCE} )</SQLExpression>
                     </Prediction>
                 </OutputColumn>
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_27" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10137"/>
+                    <Model IsModelBuilt="false" NodeId="10103" Schema="" Name="CLAS_SVM_1_10" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10127"/>
                     <PredictionProbability>
                         <Column Name="CLAS_SVM_1_4_PROB"/>
                     </PredictionProbability>
@@ -1341,8 +1284,8 @@ FROM {INPUT_SOURCE} )</SQLExpression>
             </OutputColumns>
             <CaseAttributes/>
         </Apply>
-        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10115" Name="Apply 2" Status="Complete">
-            <Icon XCOORD="712" YCOORD="341"></Icon>
+        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10115" Name="異常モデルの適用" Status="Complete">
+            <Icon XCOORD="683" YCOORD="341"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -1355,15 +1298,15 @@ FROM {INPUT_SOURCE} )</SQLExpression>
             </CacheSettings>
             <SQLExpression>"N$10115" as (SELECT 
 "TIME_SERIAL", 
-PREDICTION("ANOM_SVM_1_27" USING *) "ANOM_SVM_1_10_PRED", 
-PREDICTION_PROBABILITY("ANOM_SVM_1_27" USING *) "ANOM_SVM_1_10_PROB"
+PREDICTION("ANOM_SVM_1_10" USING *) "ANOM_SVM_1_10_PRED", 
+PREDICTION_PROBABILITY("ANOM_SVM_1_10" USING *) "ANOM_SVM_1_10_PROB"
 FROM {INPUT_SOURCE} )</SQLExpression>
             <SupplementalAttributes AutoSpec="No">
                 <Attribute Name="TIME_SERIAL" DataType="NUMBER" Status="Valid"/>
             </SupplementalAttributes>
             <OutputColumns AutoSpec="No">
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_27" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10135"/>
+                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_10" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10125"/>
                     <Prediction>
                         <CostOption>
                             <None/>
@@ -1372,7 +1315,7 @@ FROM {INPUT_SOURCE} )</SQLExpression>
                     </Prediction>
                 </OutputColumn>
                 <OutputColumn>
-                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_27" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10135"/>
+                    <Model IsModelBuilt="false" NodeId="10110" Schema="" Name="ANOM_SVM_1_10" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10125"/>
                     <PredictionProbability>
                         <Column Name="ANOM_SVM_1_10_PROB"/>
                     </PredictionProbability>
@@ -1380,8 +1323,8 @@ FROM {INPUT_SOURCE} )</SQLExpression>
             </OutputColumns>
             <CaseAttributes/>
         </Apply>
-        <Graph ViewName="OUTPUT_1_5" ViewDirty="true" SampleDirty="true" Id="10071" Name="Result 1" Status="Complete">
-            <Icon XCOORD="831" YCOORD="261"></Icon>
+        <Graph ViewName="OUTPUT_1_10" ViewDirty="true" SampleDirty="true" Id="10071" Name="分類モデル適用結果" Status="Ready">
+            <Icon XCOORD="912" YCOORD="248"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -1428,11 +1371,11 @@ FROM
                 <Method>
                     <Random Seed="12345"/>
                 </Method>
-                <OutputTable Name="ODMR$22_47_57_687368NHVNDQX" CreationDate="2018-05-22T22:47:58"/>
+                <OutputTable Name="ODMR$19_07_49_944761IHDRFEA" CreationDate="2016-12-07T19:07:50"/>
             </SampleSettings>
         </Graph>
-        <Graph ViewName="OUTPUT_2_5" ViewDirty="true" SampleDirty="true" Id="10118" Name="Result 2" Status="Complete">
-            <Icon XCOORD="830" YCOORD="342"></Icon>
+        <Graph ViewName="OUTPUT_2_10" ViewDirty="true" SampleDirty="true" Id="10118" Name="異常モデル適用結果" Status="Ready">
+            <Icon XCOORD="910" YCOORD="342"></Icon>
             <Messages/>
             <Parallelism Enable="false">
                 <SystemDetermined/>
@@ -1479,82 +1422,82 @@ FROM
                 <Method>
                     <Random Seed="12345"/>
                 </Method>
-                <OutputTable Name="ODMR$22_48_57_439080UBUONVZ" CreationDate="2018-05-22T22:48:58"/>
+                <OutputTable Name="ODMR$05_24_14_389889GTFSNCX" CreationDate="2017-08-21T05:24:15"/>
             </SampleSettings>
         </Graph>
     </Nodes>
     <Links>
-        <Link Id="10022" From="10002" To="10021" Name="リンク" Label="From &quot;DEVICE - Database&quot; to &quot;DEVICE Model A&quot;">
+        <Link Id="10022" From="10002" To="10021" Name="リンク" Label="元 &quot;DEVICE（Database）&quot; 先 &quot;モデルAのデバイス&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10024" From="10021" To="10006" Name="リンク" Label="From &quot;DEVICE Model A&quot; to &quot;Join&quot;">
+        <Link Id="10024" From="10021" To="10006" Name="リンク" Label="元 &quot;モデルAのデバイス&quot; 先 &quot;結合&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10028" From="10006" To="10027" Name="リンク" Label="From &quot;Join&quot; to &quot;TRAINING&quot;">
+        <Link Id="10028" From="10006" To="10027" Name="リンク" Label="元 &quot;結合&quot; 先 &quot;TRAINING6&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10042" From="10027" To="10041" Name="リンク" Label="From &quot;TRAINING&quot; to &quot;Only Normal&quot;">
+        <Link Id="10042" From="10027" To="10041" Name="リンク" Label="元 &quot;TRAINING6&quot; 先 &quot;正常データ絞り込み&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10083" From="10025" To="10082" Name="リンク" Label="From &quot;SOUND - Hadoop&quot; to &quot;SOUND Aug 20&quot;">
+        <Link Id="10083" From="10025" To="10082" Name="リンク" Label="元 &quot;SOUND（Hadoop）&quot; 先 &quot;8月20日のデータ&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10084" From="10082" To="10006" Name="リンク" Label="From &quot;SOUND Aug 20&quot; to &quot;Join&quot;">
+        <Link Id="10084" From="10082" To="10006" Name="リンク" Label="元 &quot;8月20日のデータ&quot; 先 &quot;結合&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10096" From="10025" To="10095" Name="リンク" Label="From &quot;SOUND - Hadoop&quot; to &quot;SOUND Aug 21&quot;">
+        <Link Id="10096" From="10025" To="10095" Name="リンク" Label="元 &quot;SOUND（Hadoop）&quot; 先 &quot;8月21日のデータ&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10104" From="10027" To="10103" Name="リンク" Label="From &quot;TRAINING&quot; to &quot;Classification&quot;">
+        <Link Id="10104" From="10027" To="10103" Name="リンク" Label="元 &quot;TRAINING6&quot; 先 &quot;分類構築&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10106" From="10103" To="10105" Name="リンク" Label="From &quot;Classification&quot; to &quot;Apply 1&quot;">
+        <Link Id="10106" From="10103" To="10105" Name="リンク" Label="元 &quot;分類構築&quot; 先 &quot;分類モデルの適用&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10107" From="10095" To="10105" Name="リンク" Label="From &quot;SOUND Aug 21&quot; to &quot;Apply 1&quot;">
+        <Link Id="10107" From="10095" To="10105" Name="リンク" Label="元 &quot;8月21日のデータ&quot; 先 &quot;分類モデルの適用&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10108" From="10105" To="10071" Name="リンク" Label="From &quot;Apply 1&quot; to &quot;Result 1&quot;">
+        <Link Id="10108" From="10105" To="10071" Name="リンク" Label="元 &quot;分類モデルの適用&quot; 先 &quot;分類モデル適用結果&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10111" From="10041" To="10110" Name="リンク" Label="From &quot;Only Normal&quot; to &quot;Anomaly Detection&quot;">
+        <Link Id="10111" From="10041" To="10110" Name="リンク" Label="元 &quot;正常データ絞り込み&quot; 先 &quot;異常構築&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10116" From="10110" To="10115" Name="リンク" Label="From &quot;Anomaly Detection&quot; to &quot;Apply 2&quot;">
+        <Link Id="10116" From="10110" To="10115" Name="リンク" Label="元 &quot;異常構築&quot; 先 &quot;異常モデルの適用&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10117" From="10095" To="10115" Name="リンク" Label="From &quot;SOUND Aug 21&quot; to &quot;Apply 2&quot;">
+        <Link Id="10117" From="10095" To="10115" Name="リンク" Label="元 &quot;8月21日のデータ&quot; 先 &quot;異常モデルの適用&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>
         </Link>
-        <Link Id="10119" From="10115" To="10118" Name="リンク" Label="From &quot;Apply 2&quot; to &quot;Result 2&quot;">
+        <Link Id="10119" From="10115" To="10118" Name="リンク" Label="元 &quot;異常モデルの適用&quot; 先 &quot;異常モデル適用結果&quot;">
             <ConnectorGraphicsInfo>
                 <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
             </ConnectorGraphicsInfo>

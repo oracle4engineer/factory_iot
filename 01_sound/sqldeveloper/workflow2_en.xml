@@ -1,0 +1,2018 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WorkflowProcess Version="12.2.0.0.1" DBVersion="12.1.0.2.0" Schema="" xmlns="http://xmlns.oracle.com/odmr11">
+    <Nodes>
+        <DataSource Id="10001" Name="SOUND_INIT" Status="Complete">
+            <Icon XCOORD="159" YCOORD="370"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10001" as (select "SOUND_INIT"."S03_ENER", 
+"SOUND_INIT"."ANOMARY", 
+"SOUND_INIT"."DATETIME", 
+"SOUND_INIT"."S01_ENER", 
+"SOUND_INIT"."S01_FREQ", 
+"SOUND_INIT"."DEVICE", 
+"SOUND_INIT"."S02_FREQ", 
+"SOUND_INIT"."S02_ENER", 
+"SOUND_INIT"."S03_FREQ" 
+from "FACTORY_IOT"."SOUND_INIT"  )</SQLExpression>
+            <Attributes>
+                <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+            </Attributes>
+            <SourceTable Schema="" Name="SOUND_INIT" Synonym="false"/>
+            <JSONColumns/>
+            <DataGuideSettings Generate="true" UseFullData="false" UseFullDoc="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <NumberOfValues>10000</NumberOfValues>
+            </DataGuideSettings>
+        </DataSource>
+        <DataSource Id="10009" Name="SOUND_TEST" Status="Complete">
+            <Icon XCOORD="409" YCOORD="201"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10009" as (select "SOUND_TEST"."DATETIME", 
+"SOUND_TEST"."DEVICE", 
+"SOUND_TEST"."S01_ENER", 
+"SOUND_TEST"."S01_FREQ", 
+"SOUND_TEST"."S02_ENER", 
+"SOUND_TEST"."S02_FREQ", 
+"SOUND_TEST"."S03_ENER", 
+"SOUND_TEST"."S03_FREQ" 
+from "FACTORY_IOT"."SOUND_TEST"  )</SQLExpression>
+            <Attributes>
+                <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+            </Attributes>
+            <SourceTable Schema="" Name="SOUND_TEST" Synonym="false"/>
+            <JSONColumns/>
+            <DataGuideSettings Generate="true" UseFullData="false" UseFullDoc="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <NumberOfValues>10000</NumberOfValues>
+            </DataGuideSettings>
+        </DataSource>
+        <DataProfile Id="10039" Name="Explore Data 1" Status="Complete">
+            <Icon XCOORD="284" YCOORD="253"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10039" AS ( SELECT   ATTR,
+  DATA_TYPE,
+  NULL_PERCENT,
+  DISTINCT_CNT,
+  DISTINCT_PERCENT,
+  MODE_VALUE,
+  AVG,
+  AVG_DATE,
+  AVG_TS_TZ,
+  MEDIAN_VAL,
+  MEDIAN_DATE,
+  MEDIAN_TS_TZ,
+  MIN,
+  MAX,
+  STD,
+  VAR,
+  SKEWNESS,
+  KURTOSIS,
+  HISTOGRAMS FROM OUTPUT_1_28)</SQLExpression>
+            <DataProfileInput>
+                <Attributes>
+                    <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                    <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                </Attributes>
+                <GroupByAttribute Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+            </DataProfileInput>
+            <DataProfileOutput>
+                <Attributes>
+                    <Attribute Name="ATTR" DataType="VARCHAR2" Status="Valid"/>
+                    <Attribute Name="DATA_TYPE" DataType="VARCHAR2" Status="Valid"/>
+                    <Attribute Name="NULL_PERCENT" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="DISTINCT_CNT" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="DISTINCT_PERCENT" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="MODE_VALUE" DataType="NVARCHAR2" Status="Valid"/>
+                    <Attribute Name="AVG" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="AVG_DATE" DataType="DATE" Status="Valid"/>
+                    <Attribute Name="AVG_TS_TZ" DataType="TIMESTAMP WITH TIME ZONE" Status="Valid"/>
+                    <Attribute Name="MEDIAN_VAL" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="MEDIAN_DATE" DataType="DATE" Status="Valid"/>
+                    <Attribute Name="MEDIAN_TS_TZ" DataType="TIMESTAMP WITH TIME ZONE" Status="Valid"/>
+                    <Attribute Name="MIN" DataType="NVARCHAR2" Status="Valid"/>
+                    <Attribute Name="MAX" DataType="NVARCHAR2" Status="Valid"/>
+                    <Attribute Name="STD" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="VAR" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="SKEWNESS" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="KURTOSIS" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="HISTOGRAMS" DataType="ODMR_HISTOGRAMS_EX" Status="Valid"/>
+                </Attributes>
+            </DataProfileOutput>
+            <DataProfileSettings>
+                <NumericalBins>10</NumericalBins>
+                <CategoricalBins>10</CategoricalBins>
+                <DateBins>10</DateBins>
+            </DataProfileSettings>
+            <StatisticTable Name="OUTPUT_1_28" CreationDate="2018-09-08T07:55:27"/>
+            <StatsSelection percentdistinct="true" percentnull="true" max="true" min="true" avg="true" std="true" var="true" kurtosis="false" median="true" skewness="false" mode="true" modesampled="true" modeall="false" histogram="true" rowcount="2044"/>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+            </SampleSettings>
+        </DataProfile>
+        <DataProfile Id="10049" Name="Explore Data 2" Status="Complete">
+            <Icon XCOORD="611" YCOORD="119"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10049" AS ( SELECT   ATTR,
+  DATA_TYPE,
+  NULL_PERCENT,
+  DISTINCT_CNT,
+  DISTINCT_PERCENT,
+  MODE_VALUE,
+  AVG,
+  AVG_DATE,
+  AVG_TS_TZ,
+  MEDIAN_VAL,
+  MEDIAN_DATE,
+  MEDIAN_TS_TZ,
+  MIN,
+  MAX,
+  STD,
+  VAR,
+  SKEWNESS,
+  KURTOSIS,
+  HISTOGRAMS FROM OUTPUT_4_28)</SQLExpression>
+            <DataProfileInput>
+                <Attributes>
+                    <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                    <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                </Attributes>
+            </DataProfileInput>
+            <DataProfileOutput>
+                <Attributes>
+                    <Attribute Name="ATTR" DataType="VARCHAR2" Status="Valid"/>
+                    <Attribute Name="DATA_TYPE" DataType="VARCHAR2" Status="Valid"/>
+                    <Attribute Name="NULL_PERCENT" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="DISTINCT_CNT" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="DISTINCT_PERCENT" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="MODE_VALUE" DataType="NVARCHAR2" Status="Valid"/>
+                    <Attribute Name="AVG" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="AVG_DATE" DataType="DATE" Status="Valid"/>
+                    <Attribute Name="AVG_TS_TZ" DataType="TIMESTAMP WITH TIME ZONE" Status="Valid"/>
+                    <Attribute Name="MEDIAN_VAL" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="MEDIAN_DATE" DataType="DATE" Status="Valid"/>
+                    <Attribute Name="MEDIAN_TS_TZ" DataType="TIMESTAMP WITH TIME ZONE" Status="Valid"/>
+                    <Attribute Name="MIN" DataType="NVARCHAR2" Status="Valid"/>
+                    <Attribute Name="MAX" DataType="NVARCHAR2" Status="Valid"/>
+                    <Attribute Name="STD" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="VAR" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="SKEWNESS" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="KURTOSIS" DataType="NUMBER" Status="Valid"/>
+                    <Attribute Name="HISTOGRAMS" DataType="ODMR_HISTOGRAMS_EX" Status="Valid"/>
+                </Attributes>
+            </DataProfileOutput>
+            <DataProfileSettings>
+                <NumericalBins>10</NumericalBins>
+                <CategoricalBins>10</CategoricalBins>
+                <DateBins>10</DateBins>
+            </DataProfileSettings>
+            <StatisticTable Name="OUTPUT_4_28" CreationDate="2018-09-08T07:55:26"/>
+            <StatsSelection percentdistinct="true" percentnull="true" max="true" min="true" avg="true" std="true" var="true" kurtosis="false" median="true" skewness="false" mode="true" modesampled="true" modeall="false" histogram="true" rowcount="1080"/>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+            </SampleSettings>
+        </DataProfile>
+        <CreateTable TableName="SOUND_PRED_EN" Table="true" AutoSpec="Yes" Id="10085" Name="SOUND_PRED_EN" Status="Ready">
+            <Icon XCOORD="892" YCOORD="189"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10085" as (SELECT 
+"PROB_ANOM",
+"PROB_CLAS",
+"S03_ENER",
+"DATETIME",
+"S01_ENER",
+"S01_FREQ",
+"DEVICE",
+"S02_FREQ",
+"S02_ENER",
+"S03_FREQ",
+"UNIXTIME"
+ FROM {INPUT_SOURCE} )</SQLExpression>
+            <DBAttributes>
+                <DBAttribute Key="No" Index="No" Name="PROB_ANOM" DataType="BINARY_DOUBLE" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="PROB_CLAS" DataType="BINARY_DOUBLE" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                <DBAttribute Key="No" Index="No" Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+            </DBAttributes>
+            <JSONColumns/>
+            <CreateTableOptions>
+                <Logging>NOLOGGING</Logging>
+                <TableCompression>ROW STORE COMPRESS</TableCompression>
+            </CreateTableOptions>
+        </CreateTable>
+        <Transformation Id="10020" Name="UNIX Time" Status="Complete">
+            <Icon XCOORD="615" YCOORD="256"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10020" AS ( SELECT "S03_ENER",
+  "DATETIME",
+  "S01_ENER",
+  "S01_FREQ",
+  "DEVICE",
+  "S02_FREQ",
+  "S02_ENER",
+  "S03_FREQ",trunc(to_number(
+datetime - to_date('1970/01/01 00:00:00', 'YYYY/MM/DD HH24:MI:SS')
+) * (24 * 60 * 60)) as "UNIXTIME" FROM {INPUT_SOURCE} ) </SQLExpression>
+            <TransformationSourceAttributes>
+                <TransformationSourceAttributeType Name="S03_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="DATETIME" DataType="DATE" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S01_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S01_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="DEVICE" DataType="VARCHAR2" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S02_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S02_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S03_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+            </TransformationSourceAttributes>
+            <TransformedAttributes>
+                <MapTransformedSourceType>
+                    <key Name="UNIXTIME" DataType="NUMBER" Status="Valid">
+                        <IsOutput>true</IsOutput>
+                        <TransformationElementType>
+                            <CustomTransformationEx>trunc(to_number(
+datetime - to_date('1970/01/01 00:00:00', 'YYYY/MM/DD HH24:MI:SS')
+) * (24 * 60 * 60))</CustomTransformationEx>
+                        </TransformationElementType>
+                        <Modified>false</Modified>
+                    </key>
+                    <StringCollectionNames/>
+                </MapTransformedSourceType>
+            </TransformedAttributes>
+            <DataProfileSettings>
+                <NumericalBins>10</NumericalBins>
+                <CategoricalBins>10</CategoricalBins>
+                <DateBins>10</DateBins>
+            </DataProfileSettings>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+                <OutputTable Name="ODMR$07_55_17_048026AAJZZPD" CreationDate="2018-09-08T07:55:38"/>
+            </SampleSettings>
+            
+            <StatsSelection percentdistinct="true" percentnull="true" max="true" min="true" avg="true" std="true" var="true" kurtosis="false" median="true" skewness="false" mode="true" modesampled="true" modeall="false" histogram="true" rowcount="1080"/>
+        </Transformation>
+        <Transformation Id="10064" Name="Probability 2" Status="Complete">
+            <Icon XCOORD="593" YCOORD="483"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10064" AS ( SELECT "S03_ENER",
+  "DATETIME",
+  "S01_ENER",
+  "S01_FREQ",
+  "DEVICE",
+  "S02_FREQ",
+  "S02_ENER",
+  "S03_FREQ",
+  "UNIXTIME",
+  "PROB",
+  "PRED",CASE PRED
+  WHEN 1 THEN PROB 
+  WHEN 0 THEN 1 - PROB
+END as "PROB_ABS",ABS(1 - PRED) as "PRED_INV" FROM {INPUT_SOURCE} ) </SQLExpression>
+            <TransformationSourceAttributes>
+                <TransformationSourceAttributeType Name="S03_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="DATETIME" DataType="DATE" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S01_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S01_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="DEVICE" DataType="VARCHAR2" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S02_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S02_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S03_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="UNIXTIME" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="PROB" DataType="BINARY_DOUBLE" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="PRED" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+            </TransformationSourceAttributes>
+            <TransformedAttributes>
+                <MapTransformedSourceType>
+                    <key Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid">
+                        <IsOutput>true</IsOutput>
+                        <TransformationElementType>
+                            <CustomTransformationEx>CASE PRED
+  WHEN 1 THEN PROB 
+  WHEN 0 THEN 1 - PROB
+END</CustomTransformationEx>
+                        </TransformationElementType>
+                        <Modified>false</Modified>
+                    </key>
+                    <StringCollectionNames/>
+                </MapTransformedSourceType>
+                <MapTransformedSourceType>
+                    <key Name="PRED_INV" DataType="NUMBER" Status="Valid">
+                        <IsOutput>true</IsOutput>
+                        <TransformationElementType>
+                            <CustomTransformationEx>ABS(1 - PRED)</CustomTransformationEx>
+                        </TransformationElementType>
+                        <Modified>false</Modified>
+                    </key>
+                    <StringCollectionNames/>
+                </MapTransformedSourceType>
+            </TransformedAttributes>
+            <DataProfileSettings>
+                <NumericalBins>10</NumericalBins>
+                <CategoricalBins>10</CategoricalBins>
+                <DateBins>10</DateBins>
+            </DataProfileSettings>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+                <OutputTable Name="ODMR$07_55_45_296055JPYNFDJ" CreationDate="2018-09-08T07:55:50"/>
+            </SampleSettings>
+            
+            <StatsSelection percentdistinct="true" percentnull="true" max="true" min="true" avg="true" std="true" var="true" kurtosis="false" median="true" skewness="false" mode="true" modesampled="true" modeall="false" histogram="true" rowcount="1080"/>
+        </Transformation>
+        <Transformation Id="10076" Name="Probability 1" Status="Complete">
+            <Icon XCOORD="591" YCOORD="370"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10076" AS ( SELECT "S03_ENER",
+  "DATETIME",
+  "S01_ENER",
+  "S01_FREQ",
+  "DEVICE",
+  "S02_FREQ",
+  "S02_ENER",
+  "S03_FREQ",
+  "UNIXTIME",
+  "PROB",
+  "PRED",CASE "PRED" 
+  WHEN 0 THEN "PROB"  
+  WHEN 1 THEN 1 - "PROB" 
+END as "PROB_ABS" FROM {INPUT_SOURCE} ) </SQLExpression>
+            <TransformationSourceAttributes>
+                <TransformationSourceAttributeType Name="S03_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="DATETIME" DataType="DATE" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S01_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S01_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="DEVICE" DataType="VARCHAR2" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S02_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S02_ENER" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="S03_FREQ" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="UNIXTIME" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="PROB" DataType="BINARY_DOUBLE" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+                <TransformationSourceAttributeType Name="PRED" DataType="NUMBER" Status="Valid">
+                    <IsOutput>true</IsOutput>
+                </TransformationSourceAttributeType>
+            </TransformationSourceAttributes>
+            <TransformedAttributes>
+                <MapTransformedSourceType>
+                    <key Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid">
+                        <IsOutput>true</IsOutput>
+                        <TransformationElementType>
+                            <CustomTransformationEx>CASE "PRED" 
+  WHEN 0 THEN "PROB"  
+  WHEN 1 THEN 1 - "PROB" 
+END</CustomTransformationEx>
+                        </TransformationElementType>
+                        <Modified>false</Modified>
+                    </key>
+                    <StringCollectionNames/>
+                </MapTransformedSourceType>
+            </TransformedAttributes>
+            <DataProfileSettings>
+                <NumericalBins>10</NumericalBins>
+                <CategoricalBins>10</CategoricalBins>
+                <DateBins>10</DateBins>
+            </DataProfileSettings>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+                <OutputTable Name="ODMR$07_55_46_862081YRHHAJA" CreationDate="2018-09-08T07:55:51"/>
+            </SampleSettings>
+            
+            <StatsSelection percentdistinct="true" percentnull="true" max="true" min="true" avg="true" std="true" var="true" kurtosis="false" median="true" skewness="false" mode="true" modesampled="true" modeall="false" histogram="true" rowcount="1080"/>
+        </Transformation>
+        <Join UseCartesian="false" Id="10081" Name="Join" Status="Complete">
+            <Icon XCOORD="736" YCOORD="256"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10081" as (SELECT 
+"Probability 2"."PROB_ABS" "PROB_ANOM"
+, "Probability 1"."PROB_ABS" "PROB_CLAS"
+, "UNIX Time"."S03_ENER"
+, "UNIX Time"."DATETIME"
+, "UNIX Time"."S01_ENER"
+, "UNIX Time"."S01_FREQ"
+, "UNIX Time"."DEVICE"
+, "UNIX Time"."S02_FREQ"
+, "UNIX Time"."S02_ENER"
+, "UNIX Time"."S03_FREQ"
+, "UNIX Time"."UNIXTIME"
+
+FROM
+{INPUT_SOURCE:10020} "UNIX Time"
+INNER JOIN {INPUT_SOURCE:10076} "Probability 1"
+ON "UNIX Time"."DATETIME" = "Probability 1"."DATETIME"
+AND "UNIX Time"."DEVICE" = "Probability 1"."DEVICE"
+INNER JOIN {INPUT_SOURCE:10064} "Probability 2"
+ON "UNIX Time"."DATETIME" = "Probability 2"."DATETIME"
+AND "UNIX Time"."DEVICE" = "Probability 2"."DEVICE"
+
+ )</SQLExpression>
+            <KeyColumns AutoSpec="No">
+                <JoinColumn Type="Inner">
+                    <LeftColumn NodeId="10020" NodeName="UNIX Time" Key="Yes" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                    <RightColumn NodeId="10076" NodeName="Probability 1" Key="Yes" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                </JoinColumn>
+                <JoinColumn Type="Inner">
+                    <LeftColumn NodeId="10020" NodeName="UNIX Time" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <RightColumn NodeId="10076" NodeName="Probability 1" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                </JoinColumn>
+                <JoinColumn Type="Inner">
+                    <LeftColumn NodeId="10020" NodeName="UNIX Time" Key="Yes" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                    <RightColumn NodeId="10064" NodeName="Probability 2" Key="Yes" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                </JoinColumn>
+                <JoinColumn Type="Inner">
+                    <LeftColumn NodeId="10020" NodeName="UNIX Time" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                    <RightColumn NodeId="10064" NodeName="Probability 2" Key="Yes" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                </JoinColumn>
+            </KeyColumns>
+            <OutputColumns AutoSpec="No">
+                <RefDBColumn NodeId="10064" NodeName="Probability 2" Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid" Alias="PROB_ANOM"/>
+                <RefDBColumn NodeId="10076" NodeName="Probability 1" Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid" Alias="PROB_CLAS"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                <RefDBColumn NodeId="10020" NodeName="UNIX Time" Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+            </OutputColumns>
+        </Join>
+        <RowFilter Id="10024" Name="Only Normal" Status="Complete">
+            <Icon XCOORD="159" YCOORD="486"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10024" as (SELECT 
+"S03_ENER"
+, "ANOMARY"
+, "S01_ENER"
+, "S01_FREQ"
+, "DEVICE"
+, "S02_FREQ"
+, "S02_ENER"
+, "S03_FREQ"
+, "DATETIME"
+
+FROM
+{INPUT_SOURCE}
+WHERE
+"ANOMARY" != 1 )</SQLExpression>
+            <OutputColumns>
+                <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+            </OutputColumns>
+            <Filter>"ANOMARY" != 1</Filter>
+        </RowFilter>
+        <ClassificationBuild Id="10036" Name="Classification" Status="Complete">
+            <Icon XCOORD="286" YCOORD="370"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <BuildDataSource SourceId="10001"/>
+            <CaseAttributes/>
+            <MiningAttributes AutoSpec="No">
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+            </MiningAttributes>
+            <Stoplists>
+                <Stoplist Id="1" Name="Default" Type="Basic" Language="ENGLISH" DBName="">
+                    <StopTokens>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>Mr</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>Mrs</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>Ms</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>a</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>all</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>almost</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>also</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>although</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>an</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>and</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>any</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>are</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>as</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>at</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>be</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>because</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>been</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>both</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>but</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>by</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>can</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>could</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>d</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>did</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>do</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>does</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>either</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>for</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>from</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>had</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>has</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>have</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>having</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>he</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>her</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>here</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>hers</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>him</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>his</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>how</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>however</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>i</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>if</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>in</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>into</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>is</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>it</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>its</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>just</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>ll</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>me</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>might</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>my</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>no</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>non</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>nor</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>not</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>of</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>on</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>one</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>only</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>onto</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>or</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>our</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>ours</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>s</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>shall</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>she</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>should</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>since</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>so</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>some</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>still</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>such</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>t</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>than</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>that</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>the</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>their</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>them</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>then</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>there</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>therefore</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>these</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>they</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>this</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>those</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>though</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>through</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>thus</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>to</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>too</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>until</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>ve</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>very</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>was</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>we</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>were</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>what</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>when</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>where</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>whether</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>which</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>while</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>who</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>whose</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>why</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>will</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>with</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>would</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>yet</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>you</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>your</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>yours</Item>
+                        </Token>
+                    </StopTokens>
+                </Stoplist>
+            </Stoplists>
+            <TextSettings TransformType="Token" CategoricalCutOffValue="200">
+                <Token>
+                    <Token MaxNumberPerDoc="50" MaxNumberAllDocs="3000" Frequency="IDF" StoplistId="1" Policy="">
+                        <Lexer Name="" Type="Basic">
+                            <Settings/>
+                        </Lexer>
+                        <Languages>
+                            <Language Name="ENGLISH" Type="SingleByte"/>
+                        </Languages>
+                    </Token>
+                </Token>
+                <Theme Type="Single">
+                    <Token MaxNumberPerDoc="50" MaxNumberAllDocs="3000" Frequency="IDF" StoplistId="1" Policy="">
+                        <Lexer Type="Basic">
+                            <Settings>
+                                <Attribute Name="index_themes" ValueString="YES" Type="String"/>
+                                <Attribute Name="theme_language" ValueString="ENGLISH" Type="String"/>
+                            </Settings>
+                        </Lexer>
+                        <Languages>
+                            <Language Name="ENGLISH" Type="SingleByte"/>
+                        </Languages>
+                    </Token>
+                </Theme>
+            </TextSettings>
+            <TextAttributes/>
+            <HeuristicSummaryResult StatisticTable="ODMR$00_01_40_063270MOHEOAC">
+                <Attribute Name="DATETIME"/>
+            </HeuristicSummaryResult>
+            <TestDataSource>
+                <SplitData TestPercent="40.0" DataFormat="Table"/>
+            </TestDataSource>
+            <TargetAttribute Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+            <Models>
+                <NaiveBayesModel Id="10097" Name="CLAS_NB_1_7" Status="Complete" CreationDate="2018-09-08T07:55:36" Annotation="" UseForOutput="true">
+                    <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
+                        <MiningAttributes>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                        </MiningAttributes>
+                        <HeuristicResult StatisticTable="ODMR$00_01_40_063270MOHEOAC"/>
+                    </InputMiningData>
+                    <Performance>
+                        <Balanced WeightsTable="ODMR$07_55_22_728280IPWOGQB"/>
+                    </Performance>
+                    <Tuning>
+                        <None/>
+                    </Tuning>
+                    <NaiveBayesAlgo>
+                        <NABS_PAIRWISE_THRESHOLD>0.0</NABS_PAIRWISE_THRESHOLD>
+                        <NABS_SINGLETON_THRESHOLD>0.0</NABS_SINGLETON_THRESHOLD>
+                    </NaiveBayesAlgo>
+                </NaiveBayesModel>
+                <DecisionTreeModel Id="10096" Name="CLAS_DT_1_7" Status="Complete" CreationDate="2018-09-08T07:55:36" Annotation="" UseForOutput="true">
+                    <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
+                        <MiningAttributes>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                        </MiningAttributes>
+                        <HeuristicResult StatisticTable="ODMR$00_01_40_063270MOHEOAC"/>
+                    </InputMiningData>
+                    <Performance>
+                        <Balanced WeightsTable="ODMR$07_55_22_547096BDJTYDO"/>
+                    </Performance>
+                    <Tuning>
+                        <None/>
+                    </Tuning>
+                    <DecisionTreeAlgo>
+                        <TREE_IMPURITY_METRIC>TREE_IMPURITY_GINI</TREE_IMPURITY_METRIC>
+                        <TREE_TERM_MAX_DEPTH>7</TREE_TERM_MAX_DEPTH>
+                        <TREE_TERM_MINPCT_NODE>0.05</TREE_TERM_MINPCT_NODE>
+                        <TREE_TERM_MINPCT_SPLIT>0.1</TREE_TERM_MINPCT_SPLIT>
+                        <TREE_TERM_MINREC_NODE>10</TREE_TERM_MINREC_NODE>
+                        <TREE_TERM_MINREC_SPLIT>20</TREE_TERM_MINREC_SPLIT>
+                    </DecisionTreeAlgo>
+                </DecisionTreeModel>
+                <CSupportVectorMachineModel Id="10095" Name="CLAS_SVM_1_7" Status="Complete" CreationDate="2018-09-08T07:55:36" Annotation="" UseForOutput="true">
+                    <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
+                        <MiningAttributes>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                        </MiningAttributes>
+                        <HeuristicResult StatisticTable="ODMR$00_01_40_063270MOHEOAC"/>
+                    </InputMiningData>
+                    <Performance>
+                        <Balanced WeightsTable="ODMR$07_55_22_818358CVSUPFA"/>
+                    </Performance>
+                    <Tuning>
+                        <None/>
+                    </Tuning>
+                    <CSupportVectorMachineAlgo>
+                        <SVMS_ACTIVE_LEARNING>SVMS_AL_ENABLE</SVMS_ACTIVE_LEARNING>
+                        <SVMS_CONV_TOLERANCE>0.001</SVMS_CONV_TOLERANCE>
+                    </CSupportVectorMachineAlgo>
+                </CSupportVectorMachineModel>
+                <CGeneralizedLinearModel Id="10094" Name="CLAS_GLM_1_7" Status="Complete" CreationDate="2018-09-08T07:55:37" Annotation="" UseForOutput="true">
+                    <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
+                        <MiningAttributes>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                        </MiningAttributes>
+                        <HeuristicResult StatisticTable="ODMR$00_01_40_063270MOHEOAC"/>
+                    </InputMiningData>
+                    <Performance>
+                        <Balanced WeightsTable="ODMR$07_55_22_904050NNHVTQE"/>
+                    </Performance>
+                    <Tuning>
+                        <None/>
+                    </Tuning>
+                    <CGeneralizedLinearAlgo>
+                        <GLMS_CONF_LEVEL>0.95</GLMS_CONF_LEVEL>
+                        <GLMS_FTR_SELECTION>GLMS_FTR_SELECTION_DISABLE</GLMS_FTR_SELECTION>
+                    </CGeneralizedLinearAlgo>
+                </CGeneralizedLinearModel>
+            </Models>
+            <TestSettings>
+                <TopNTargets Value="5"/>
+            </TestSettings>
+            <Results genAccuracyMetrics="true" genConfusionMatrix="true" genROC="true" genLift="true" genTuning="false">
+                <ClassificationResult ModelId="10095" Status="Complete" Name="CLAS_SVM_1_7" CreationDate="2018-09-08T07:55:44">
+                    <TestMetrics Name="ODMR$07_55_42_527543JEHQLQC" CreationDate="2018-09-08T07:55:42"/>
+                    <ConfusionMatrix Name="ODMR$07_55_42_298031DTSMYIX" CreationDate="2018-09-08T07:55:42"/>
+                    <Lifts>
+                        <Lift TargetValue="0" Name="ODMR$07_55_42_625130LFWJPTH" CreationDate="2018-09-08T07:55:43"/>
+                        <Lift TargetValue="1" Name="ODMR$07_55_43_066490VDPEDJB" CreationDate="2018-09-08T07:55:43"/>
+                    </Lifts>
+                    <ROCs>
+                        <ROC TargetValue="0" Name="ODMR$07_55_43_402749QOYXWOD" CreationDate="2018-09-08T07:55:43"/>
+                        <ROC TargetValue="1" Name="ODMR$07_55_43_684202AJYZPDE" CreationDate="2018-09-08T07:55:44"/>
+                        <AreaUnderCurve Area="0.997861385345459" TargetValue="0"/>
+                        <AreaUnderCurve Area="0.9979493618011475" TargetValue="1"/>
+                    </ROCs>
+                </ClassificationResult>
+                <ClassificationResult ModelId="10096" Status="Complete" Name="CLAS_DT_1_7" CreationDate="2018-09-08T07:55:44">
+                    <TestMetrics Name="ODMR$07_55_42_530528THAZHKF" CreationDate="2018-09-08T07:55:42"/>
+                    <ConfusionMatrix Name="ODMR$07_55_41_992015GOETISD" CreationDate="2018-09-08T07:55:42"/>
+                    <Lifts>
+                        <Lift TargetValue="0" Name="ODMR$07_55_42_839876ADZNWXV" CreationDate="2018-09-08T07:55:43"/>
+                        <Lift TargetValue="1" Name="ODMR$07_55_43_080763WLYUFWZ" CreationDate="2018-09-08T07:55:43"/>
+                    </Lifts>
+                    <ROCs>
+                        <ROC TargetValue="0" Name="ODMR$07_55_43_321636YSLVRMD" CreationDate="2018-09-08T07:55:43"/>
+                        <ROC TargetValue="1" Name="ODMR$07_55_43_714149CWJDRXF" CreationDate="2018-09-08T07:55:44"/>
+                        <AreaUnderCurve Area="0.9606288075447083" TargetValue="0"/>
+                        <AreaUnderCurve Area="0.9607115983963013" TargetValue="1"/>
+                    </ROCs>
+                </ClassificationResult>
+                <ClassificationResult ModelId="10094" Status="Complete" Name="CLAS_GLM_1_7" CreationDate="2018-09-08T07:55:44">
+                    <TestMetrics Name="ODMR$07_55_42_562997QSSZVRH" CreationDate="2018-09-08T07:55:42"/>
+                    <ConfusionMatrix Name="ODMR$07_55_42_106079HJGYNCH" CreationDate="2018-09-08T07:55:42"/>
+                    <Lifts>
+                        <Lift TargetValue="0" Name="ODMR$07_55_42_721996ATEWJSW" CreationDate="2018-09-08T07:55:43"/>
+                        <Lift TargetValue="1" Name="ODMR$07_55_43_093119TJPWGBO" CreationDate="2018-09-08T07:55:43"/>
+                    </Lifts>
+                    <ROCs>
+                        <ROC TargetValue="0" Name="ODMR$07_55_43_328319CDPGITJ" CreationDate="2018-09-08T07:55:43"/>
+                        <ROC TargetValue="1" Name="ODMR$07_55_43_766315PKNNICF" CreationDate="2018-09-08T07:55:44"/>
+                        <AreaUnderCurve Area="0.9976440668106079" TargetValue="0"/>
+                        <AreaUnderCurve Area="0.9977977275848389" TargetValue="1"/>
+                    </ROCs>
+                </ClassificationResult>
+                <ClassificationResult ModelId="10097" Status="Complete" Name="CLAS_NB_1_7" CreationDate="2018-09-08T07:55:44">
+                    <TestMetrics Name="ODMR$07_55_42_572034ZYPDPZR" CreationDate="2018-09-08T07:55:42"/>
+                    <ConfusionMatrix Name="ODMR$07_55_41_998721DMGIPEI" CreationDate="2018-09-08T07:55:42"/>
+                    <Lifts>
+                        <Lift TargetValue="0" Name="ODMR$07_55_42_738295ZFFVGGB" CreationDate="2018-09-08T07:55:43"/>
+                        <Lift TargetValue="1" Name="ODMR$07_55_43_035355IFAODAG" CreationDate="2018-09-08T07:55:43"/>
+                    </Lifts>
+                    <ROCs>
+                        <ROC TargetValue="0" Name="ODMR$07_55_43_242271MSXOAOS" CreationDate="2018-09-08T07:55:43"/>
+                        <ROC TargetValue="1" Name="ODMR$07_55_43_665531ZEMPPSZ" CreationDate="2018-09-08T07:55:43"/>
+                        <AreaUnderCurve Area="0.9959022998809814" TargetValue="0"/>
+                        <AreaUnderCurve Area="0.9960678815841675" TargetValue="1"/>
+                    </ROCs>
+                </ClassificationResult>
+            </Results>
+        </ClassificationBuild>
+        <AnomalyDetectionBuild Id="10052" Name="Anomaly Detection" Status="Complete">
+            <Icon XCOORD="286" YCOORD="486"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <BuildDataSource SourceId="10024"/>
+            <CaseAttributes/>
+            <MiningAttributes AutoSpec="No">
+                <MiningAttribute AutoPrep="No" MiningType="Numerical" Input="No" Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="No" MiningType="Numerical" Input="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <MiningAttribute AutoPrep="No" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+            </MiningAttributes>
+            <Stoplists>
+                <Stoplist Id="1" Name="Default" Type="Basic" Language="ENGLISH" DBName="">
+                    <StopTokens>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>Mr</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>Mrs</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>Ms</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>a</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>all</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>almost</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>also</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>although</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>an</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>and</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>any</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>are</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>as</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>at</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>be</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>because</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>been</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>both</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>but</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>by</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>can</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>could</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>d</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>did</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>do</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>does</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>either</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>for</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>from</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>had</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>has</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>have</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>having</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>he</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>her</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>here</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>hers</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>him</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>his</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>how</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>however</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>i</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>if</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>in</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>into</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>is</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>it</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>its</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>just</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>ll</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>me</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>might</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>my</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>no</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>non</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>nor</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>not</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>of</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>on</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>one</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>only</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>onto</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>or</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>our</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>ours</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>s</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>shall</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>she</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>should</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>since</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>so</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>some</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>still</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>such</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>t</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>than</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>that</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>the</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>their</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>them</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>then</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>there</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>therefore</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>these</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>they</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>this</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>those</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>though</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>through</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>thus</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>to</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>too</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>until</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>ve</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>very</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>was</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>we</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>were</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>what</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>when</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>where</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>whether</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>which</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>while</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>who</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>whose</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>why</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>will</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>with</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>would</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>yet</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>you</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>your</Item>
+                        </Token>
+                        <Token Type="Word" Language="ENGLISH">
+                            <Item>yours</Item>
+                        </Token>
+                    </StopTokens>
+                </Stoplist>
+            </Stoplists>
+            <TextSettings TransformType="Token" CategoricalCutOffValue="200">
+                <Token>
+                    <Token MaxNumberPerDoc="50" MaxNumberAllDocs="3000" Frequency="IDF" StoplistId="1" Policy="">
+                        <Lexer Name="" Type="Basic">
+                            <Settings/>
+                        </Lexer>
+                        <Languages>
+                            <Language Name="ENGLISH" Type="SingleByte"/>
+                        </Languages>
+                    </Token>
+                </Token>
+                <Theme Type="Single">
+                    <Token MaxNumberPerDoc="50" MaxNumberAllDocs="3000" Frequency="IDF" StoplistId="1" Policy="">
+                        <Lexer Type="Basic">
+                            <Settings>
+                                <Attribute Name="index_themes" ValueString="YES" Type="String"/>
+                                <Attribute Name="theme_language" ValueString="ENGLISH" Type="String"/>
+                            </Settings>
+                        </Lexer>
+                        <Languages>
+                            <Language Name="ENGLISH" Type="SingleByte"/>
+                        </Languages>
+                    </Token>
+                </Theme>
+            </TextSettings>
+            <TextAttributes/>
+            <HeuristicSummaryResult StatisticTable="ODMR$00_43_10_563246FDGBZMA">
+                <Attribute Name="ANOMARY"/>
+                <Attribute Name="DATETIME"/>
+            </HeuristicSummaryResult>
+            <Models>
+                <AnomalyDetectionModel Id="10093" Name="ANOM_SVM_1_7" Status="Complete" CreationDate="2018-09-08T07:55:40" Annotation="" UseForOutput="true">
+                    <InputMiningData DataUsage="AUTO" MiningUsage="AUTO">
+                        <MiningAttributes>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="Yes" MiningType="Numerical" Input="Yes" Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="No" MiningType="Numerical" Input="No" Name="ANOMARY" DataType="NUMBER" Status="Valid"/>
+                            <MiningAttribute AutoPrep="No" MiningType="Categorical" Input="No" Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                            <MiningAttribute AutoPrep="No" MiningType="Numerical" Input="No" Name="DATETIME" DataType="DATE" Status="Valid"/>
+                        </MiningAttributes>
+                        <HeuristicResult StatisticTable="ODMR$00_43_10_563246FDGBZMA">
+                            <Attribute Name="ANOMARY"/>
+                        </HeuristicResult>
+                    </InputMiningData>
+                    <AnomalyDetectionAlgo>
+                        <SVMS_ACTIVE_LEARNING>SVMS_AL_ENABLE</SVMS_ACTIVE_LEARNING>
+                        <SVMS_CONV_TOLERANCE>0.001</SVMS_CONV_TOLERANCE>
+                        <SVMS_OUTLIER_RATE>0.1</SVMS_OUTLIER_RATE>
+                    </AnomalyDetectionAlgo>
+                </AnomalyDetectionModel>
+            </Models>
+        </AnomalyDetectionBuild>
+        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10008" Name="Apply 1" Status="Complete">
+            <Icon XCOORD="414" YCOORD="371"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10008" as (SELECT 
+"S03_ENER", 
+"DATETIME", 
+"S01_ENER", 
+"S01_FREQ", 
+"DEVICE", 
+"S02_FREQ", 
+"S02_ENER", 
+"S03_FREQ", 
+"UNIXTIME", 
+PREDICTION("CLAS_SVM_1_7" USING *) "PRED", 
+PREDICTION_PROBABILITY("CLAS_SVM_1_7" USING *) "PROB"
+FROM {INPUT_SOURCE} )</SQLExpression>
+            <SupplementalAttributes AutoSpec="No">
+                <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+            </SupplementalAttributes>
+            <OutputColumns AutoSpec="No">
+                <OutputColumn>
+                    <Model IsModelBuilt="false" NodeId="10036" Schema="" Name="CLAS_SVM_1_7" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10095"/>
+                    <Prediction>
+                        <CostOption>
+                            <None/>
+                        </CostOption>
+                        <Column Name="PRED"/>
+                    </Prediction>
+                </OutputColumn>
+                <OutputColumn>
+                    <Model IsModelBuilt="false" NodeId="10036" Schema="" Name="CLAS_SVM_1_7" MiningFunction="CLASSIFICATION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10095"/>
+                    <PredictionProbability>
+                        <Column Name="PROB"/>
+                    </PredictionProbability>
+                </OutputColumn>
+            </OutputColumns>
+            <CaseAttributes/>
+        </Apply>
+        <Apply ColumnOutputOrder="SupplementalColumns" OrderPartitions="Yes" Id="10054" Name="Apply 2" Status="Complete">
+            <Icon XCOORD="415" YCOORD="485"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="false">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10054" as (SELECT 
+"S03_ENER", 
+"DATETIME", 
+"S01_ENER", 
+"S01_FREQ", 
+"DEVICE", 
+"S02_FREQ", 
+"S02_ENER", 
+"S03_FREQ", 
+"UNIXTIME", 
+PREDICTION("ANOM_SVM_1_7" USING *) "PRED", 
+PREDICTION_PROBABILITY("ANOM_SVM_1_7" USING *) "PROB"
+FROM {INPUT_SOURCE} )</SQLExpression>
+            <SupplementalAttributes AutoSpec="No">
+                <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+            </SupplementalAttributes>
+            <OutputColumns AutoSpec="No">
+                <OutputColumn>
+                    <Model IsModelBuilt="false" NodeId="10052" Schema="" Name="ANOM_SVM_1_7" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10093"/>
+                    <Prediction>
+                        <CostOption>
+                            <None/>
+                        </CostOption>
+                        <Column Name="PRED"/>
+                    </Prediction>
+                </OutputColumn>
+                <OutputColumn>
+                    <Model IsModelBuilt="false" NodeId="10052" Schema="" Name="ANOM_SVM_1_7" MiningFunction="ANOMALY_DETECTION" MiningAlgorithm="SUPPORT_VECTOR_MACHINES" Status="Valid" UseForOutput="true" ModelId="10093"/>
+                    <PredictionProbability>
+                        <Column Name="PROB"/>
+                    </PredictionProbability>
+                </OutputColumn>
+            </OutputColumns>
+            <CaseAttributes/>
+        </Apply>
+        <Graph ViewName="OUTPUT_3_28" ViewDirty="true" SampleDirty="true" Id="10041" Name="Prediction 2" Status="Complete">
+            <Icon XCOORD="927" YCOORD="484"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10041" as (SELECT 
+"S03_ENER"
+, "DATETIME"
+, "S01_ENER"
+, "S01_FREQ"
+, "DEVICE"
+, "S02_FREQ"
+, "S02_ENER"
+, "S03_FREQ"
+, "UNIXTIME"
+, "PROB"
+, "PRED"
+, "PROB_ABS"
+, "PRED_INV"
+
+FROM
+{INPUT_SOURCE}
+ )</SQLExpression>
+            <GraphSettings>
+                <GraphSetting Name="グラフ1" Type="Line" Id="214d5a92-c9c7-49aa-9cf1-c6610ddeb231">
+                    <Comment></Comment>
+                    <XAttribute Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+                    <XBinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                        <NumericBinCount>10</NumericBinCount>
+                    </XBinningSettings>
+                    <YAttributes>
+                        <YAttribute Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid"/>
+                    </YAttributes>
+                    <GroupByOption GroupByEnabled="false">
+                        <GroupByAttribute Name="&lt;dummy&gt;" DataType="&lt;dummy&gt;" Status="Missing" Alias="&lt;dummy&gt;"/>
+                        <BinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                            <NumericBinCount>10</NumericBinCount>
+                        </BinningSettings>
+                    </GroupByOption>
+                </GraphSetting>
+            </GraphSettings>
+            <GraphSourceAttributes>
+                <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
+                <Attribute Name="PRED" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid"/>
+                <Attribute Name="PRED_INV" DataType="NUMBER" Status="Valid"/>
+            </GraphSourceAttributes>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+                <OutputTable Name="ODMR$07_55_51_709345JHOGEFM" CreationDate="2018-09-08T07:55:52"/>
+            </SampleSettings>
+        </Graph>
+        <Graph ViewName="OUTPUT_2_28" ViewDirty="true" SampleDirty="true" Id="10079" Name="Prediction 1" Status="Complete">
+            <Icon XCOORD="923" YCOORD="369"></Icon>
+            <Messages/>
+            <Parallelism Enable="false">
+                <SystemDetermined/>
+            </Parallelism>
+            <CacheSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <TopN/>
+                </Method>
+            </CacheSettings>
+            <SQLExpression>"N$10079" as (SELECT 
+"S03_ENER"
+, "DATETIME"
+, "S01_ENER"
+, "S01_FREQ"
+, "DEVICE"
+, "S02_FREQ"
+, "S02_ENER"
+, "S03_FREQ"
+, "UNIXTIME"
+, "PROB"
+, "PRED"
+, "PROB_ABS"
+
+FROM
+{INPUT_SOURCE}
+ )</SQLExpression>
+            <GraphSettings>
+                <GraphSetting Name="グラフ4" Type="Line" Id="90904013-cbca-4894-ac99-0962b6d4f1dd">
+                    <Comment></Comment>
+                    <XAttribute Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+                    <XBinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                        <NumericBinCount>10</NumericBinCount>
+                    </XBinningSettings>
+                    <YAttributes>
+                        <YAttribute Name="PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
+                    </YAttributes>
+                    <GroupByOption GroupByEnabled="true">
+                        <GroupByAttribute Name="PRED" DataType="NUMBER" Status="Valid"/>
+                        <BinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                            <NumericBinCount>10</NumericBinCount>
+                        </BinningSettings>
+                    </GroupByOption>
+                </GraphSetting>
+                <GraphSetting Name="グラフ5" Type="Line" Id="930ad1db-e2e5-4725-8711-f111664d2008">
+                    <Comment></Comment>
+                    <XAttribute Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+                    <XBinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                        <NumericBinCount>10</NumericBinCount>
+                    </XBinningSettings>
+                    <YAttributes>
+                        <YAttribute Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid"/>
+                    </YAttributes>
+                    <GroupByOption GroupByEnabled="false">
+                        <GroupByAttribute Name="&lt;dummy&gt;" DataType="&lt;dummy&gt;" Status="Missing" Alias="&lt;dummy&gt;"/>
+                        <BinningSettings BinningEnabled="false" BinningKind="EqualWidth">
+                            <NumericBinCount>10</NumericBinCount>
+                        </BinningSettings>
+                    </GroupByOption>
+                </GraphSetting>
+            </GraphSettings>
+            <GraphSourceAttributes>
+                <Attribute Name="S03_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DATETIME" DataType="DATE" Status="Valid"/>
+                <Attribute Name="S01_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S01_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="DEVICE" DataType="VARCHAR2" Status="Valid"/>
+                <Attribute Name="S02_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S02_ENER" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="S03_FREQ" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="UNIXTIME" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="PROB" DataType="BINARY_DOUBLE" Status="Valid"/>
+                <Attribute Name="PRED" DataType="NUMBER" Status="Valid"/>
+                <Attribute Name="PROB_ABS" DataType="BINARY_DOUBLE" Status="Valid"/>
+            </GraphSourceAttributes>
+            <SampleSettings UseFullData="false" GenerateCache="true">
+                <NumberOfRows>2000</NumberOfRows>
+                <Method>
+                    <Random Seed="12345"/>
+                </Method>
+                <OutputTable Name="ODMR$07_56_46_012692BYITTQH" CreationDate="2018-09-08T07:56:46"/>
+            </SampleSettings>
+        </Graph>
+    </Nodes>
+    <Links>
+        <Link Id="10028" From="10001" To="10024" Name="リンク" Label="From &quot;SOUND_INIT&quot; to &quot;Only Normal&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10029" From="10009" To="10020" Name="リンク" Label="From &quot;SOUND_TEST&quot; to &quot;UNIX Time&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10030" From="10020" To="10008" Name="リンク" Label="From &quot;UNIX Time&quot; to &quot;Apply 1&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10038" From="10036" To="10008" Name="リンク" Label="From &quot;Classification&quot; to &quot;Apply 1&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10040" From="10001" To="10039" Name="リンク" Label="From &quot;SOUND_INIT&quot; to &quot;Explore Data 1&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10050" From="10009" To="10049" Name="リンク" Label="From &quot;SOUND_TEST&quot; to &quot;Explore Data 2&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10055" From="10052" To="10054" Name="リンク" Label="From &quot;Anomaly Detection&quot; to &quot;Apply 2&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10056" From="10020" To="10054" Name="リンク" Label="From &quot;UNIX Time&quot; to &quot;Apply 2&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10060" From="10024" To="10052" Name="リンク" Label="From &quot;Only Normal&quot; to &quot;Anomaly Detection&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10065" From="10054" To="10064" Name="リンク" Label="From &quot;Apply 2&quot; to &quot;Probability 2&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10066" From="10064" To="10041" Name="リンク" Label="From &quot;Probability 2&quot; to &quot;Prediction 2&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10075" From="10001" To="10036" Name="リンク" Label="From &quot;SOUND_INIT&quot; to &quot;Classification&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10077" From="10008" To="10076" Name="リンク" Label="From &quot;Apply 1&quot; to &quot;Probability 1&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10080" From="10076" To="10079" Name="リンク" Label="From &quot;Probability 1&quot; to &quot;Prediction 1&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10083" From="10076" To="10081" Name="リンク" Label="From &quot;Probability 1&quot; to &quot;Join&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10084" From="10064" To="10081" Name="リンク" Label="From &quot;Probability 2&quot; to &quot;Join&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10086" From="10081" To="10085" Name="リンク" Label="From &quot;Join&quot; to &quot;SOUND_PRED_EN&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+        <Link Id="10087" From="10020" To="10081" Name="リンク" Label="From &quot;UNIX Time&quot; to &quot;Join&quot;">
+            <ConnectorGraphicsInfo>
+                <Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+            </ConnectorGraphicsInfo>
+        </Link>
+    </Links>
+</WorkflowProcess>
